@@ -50,4 +50,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("touch");
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            transform.position = new Vector3(42.3f, 5f, -41.35f);
+        }
+    }
+
 }
