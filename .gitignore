@@ -16,7 +16,7 @@ ExportedObj/
 *.unityproj
 *.sln
 *.suo
-*.tmp
+*.tmp	
 *.user
 *.userprefs
 *.pidb
@@ -37,3 +37,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Juego/Logs/AssetImportWorker0.log
+\Logs\
+*.log
