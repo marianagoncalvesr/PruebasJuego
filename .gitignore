@@ -36,6 +36,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-Juego/Logs/AssetImportWorker0.log
-\Logs\
+*\Logs\
 *.log
