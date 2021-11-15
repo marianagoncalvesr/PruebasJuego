@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -82,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("FloorEnd"))
         {
             playerLives -= 1;
             transform.position = new Vector3(-42.4f, 4f, -41.6f);
