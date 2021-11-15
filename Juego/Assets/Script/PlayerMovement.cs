@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 2.0f;
 
+    [SerializeField] private int playerLives = 3;
+
     [SerializeField] int playerSpeed = 5;
     [SerializeField] int rotationSpeed = 5;
 
@@ -56,7 +58,13 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("touch");
         if (other.gameObject.CompareTag("Floor"))
         {
-            transform.position = new Vector3(42.3f, 5f, -41.35f);
+            playerLives -= 1;
+            transform.position = new Vector3(-42.4f,4f,-41.6f);
+
+            if (playerLives < 1)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

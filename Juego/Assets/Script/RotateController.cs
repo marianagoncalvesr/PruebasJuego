@@ -15,4 +15,14 @@ public class RotateController : MonoBehaviour
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        Rotate();
+    }
+
+    void Rotate()
+    {
+        transform.Rotate(1f, 0, 0f * Time.deltaTime);
+    }
 }
