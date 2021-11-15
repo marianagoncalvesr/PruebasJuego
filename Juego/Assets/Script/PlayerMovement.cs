@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 2.0f;
 
+    [SerializeField] private int health = 10;
+
     [SerializeField] int diamonds = 0;
 
     [SerializeField] private int playerLives = 3;
@@ -87,11 +89,11 @@ public class PlayerMovement : MonoBehaviour
         {
             playerLives -= 1;
             transform.position = new Vector3(-42.4f, 4f, -41.6f);
+        }
 
-            if (playerLives < 1)
-            {
-                Destroy(this.gameObject);
-            }
+        if (playerLives < 1)
+        {
+            Destroy(this.gameObject);
         }
 
         if (other.gameObject.CompareTag("Diamond"))
@@ -99,6 +101,24 @@ public class PlayerMovement : MonoBehaviour
             diamonds += 1;
 
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("enemyco colision");
+
+            health -= 1;
+
+            if (health < 1)
+            {
+                playerLives -= 1;
+                transform.position = new Vector3(-42.4f, 4f, -41.6f);
+                health += 10;
+            }
+
+        }
+
+
     }
+
 
 }

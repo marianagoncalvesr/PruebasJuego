@@ -9,7 +9,7 @@ public class EnemyLookAt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Fox");
     }
 
     // Update is called once per frame
@@ -20,10 +20,8 @@ public class EnemyLookAt : MonoBehaviour
 
     void LookAtPlayer()
     {
-        if (player != null)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            transform.rotation = newRotation;
-        }
+        Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        transform.rotation = newRotation;
     }
+
 }
