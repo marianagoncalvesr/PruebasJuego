@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int playerLives = 3;
 
     [SerializeField] int playerSpeed = 5;
-    [SerializeField] int rotationSpeed = 5;
+    [SerializeField] int rotationSpeed = 450;
 
     public bool isGrounded;
     Rigidbody rb;
@@ -43,17 +43,22 @@ public class PlayerMovement : MonoBehaviour
         float ejeV = Input.GetAxis("Vertical");
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
-    
-        if(ejeV != 0)
+        playerMovement.Normalize();
 
-         rb.AddForce(playerSpeed * ejeV * transform.forward);
-            
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            Quaternion toRotation = Quaternion.LookRotation(new Vector3(ejeH,0,0), Vector3.up);
+        if (ejeV != 0)
+            Debug.Log("V:" + ejeV);
+        transform.Translate(playerSpeed * ejeV * Time.deltaTime * transform.forward, Space.World);
+        Debug.Log("H:" + ejeH);
+        this.transform.Rotate(Vector3.up * ejeH * rotationSpeed * Time.deltaTime);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
+        //if (ejeH == 1 || ejeH == -1)
+        //{
+        //    if (ejeH != 0)
+        //       
+        //    Quaternion toRotation = Quaternion.LookRotation(playerMovement, Vector3.up);
+
+        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        //}
 
     }
 
@@ -63,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Floor"))
         {
             playerLives -= 1;
-            transform.position = new Vector3(-42.4f,4f,-41.6f);
+            transform.position = new Vector3(-42.4f, 4f, -41.6f);
 
             if (playerLives < 1)
             {
@@ -74,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
-            
+
         }
     }
 
