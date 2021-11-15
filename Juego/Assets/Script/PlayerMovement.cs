@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 2.0f;
 
+    [SerializeField] int diamonds = 0;
+
     [SerializeField] private int playerLives = 3;
 
     [SerializeField] int playerSpeed = 5;
@@ -67,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        if (other.gameObject.CompareTag("Diamond"))
+        {
+            diamonds += 1;
+            
         }
     }
 

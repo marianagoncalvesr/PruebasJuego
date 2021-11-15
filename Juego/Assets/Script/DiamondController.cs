@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class DiamondController : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
     [SerializeField] GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        InvokeRepeating("Spawner", 1f, 3f);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    void Spawner()
+    private void OnTriggerEnter(Collider other)
     {
-        Instantiate(bullet, transform.position, transform.rotation);
 
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }
