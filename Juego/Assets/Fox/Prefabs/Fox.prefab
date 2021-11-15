@@ -780,7 +780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4361374554138886284}
   - component: {fileID: 7666986768240843510}
-  - component: {fileID: 7203831974686192940}
+  - component: {fileID: 7462420130462775338}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -814,7 +814,7 @@ Animator:
   m_GameObject: {fileID: 4020983980232809014}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 91e4778cdfb185d4d9bfe81556dc4333, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0c5b7ffa0a986b24ea0ddfc7e545c76b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 25d3ff5781fd99b4e88d843ffae38088, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -823,8 +823,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &7203831974686192940
-CapsuleCollider:
+--- !u!65 &7462420130462775338
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -833,10 +833,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.74
-  m_Height: 2.65
-  m_Direction: 2
-  m_Center: {x: -0, y: 0.68, z: -0.31}
+  serializedVersion: 2
+  m_Size: {x: 0, y: 1.5215391, z: 2.866104}
+  m_Center: {x: -0.5, y: 0.8010772, z: -0.4730066}
 --- !u!1 &4246927435662846628
 GameObject:
   m_ObjectHideFlags: 0
