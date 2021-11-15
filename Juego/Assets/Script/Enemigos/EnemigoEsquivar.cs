@@ -20,7 +20,7 @@ public class EnemigoEsquivar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(
+         transform.position = Vector3.MoveTowards(
             transform.position,
             siguientePosicion,
             velocidad * Time.deltaTime);

@@ -14,42 +14,70 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int playerSpeed = 5;
     [SerializeField] int rotationSpeed = 450;
 
-    public bool isGrounded;
+    Animator anim; 
+    private bool isGrounded;
+
     Rigidbody rb;
     void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
-    void OnCollisionStay()
+    private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        if (collision.gameObject.CompareTag("Floor")) { 
+            isGrounded = true;
+            anim.SetBool("isJumping", false);
+        }
+    }
+   
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = false;
+            anim.SetBool("isJumping", true);
+        }
     }
 
     void Update()
     {
         Movement();
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            isGrounded = false;
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-         
+            if (isGrounded == true)
+            {
+                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+
+            }
         }
     }
     void Movement()
     {
         float ejeH = Input.GetAxis("Horizontal");
         float ejeV = Input.GetAxis("Vertical");
-
+        
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
-        
+        if(playerMovement != Vector3.zero)
+        {
+            anim.SetBool("isRunning", true);
+
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+
+        }
+
         transform.Translate(playerSpeed * ejeV * Time.deltaTime * transform.forward, Space.World);
 
         this.transform.Rotate(Vector3.up * ejeH * rotationSpeed * Time.deltaTime);
 
-       
+
     }
 
     private void OnTriggerEnter(Collider other)

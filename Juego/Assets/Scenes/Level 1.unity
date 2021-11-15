@@ -1176,7 +1176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271175287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.880314, y: 6.8928385, z: -48.579998}
+  m_LocalPosition: {x: -39.98409, y: 6.8928385, z: -48.579998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3829,7 +3829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968742609}
   m_LocalRotation: {x: 0.16184902, y: -0.00573597, z: 0.0027843448, w: 0.98679495}
-  m_LocalPosition: {x: -41.880314, y: 6.8928385, z: -48.579998}
+  m_LocalPosition: {x: -39.98409, y: 6.8928385, z: -48.579998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 208310795}
@@ -5805,12 +5805,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 0, z: 0}
-  jumpForce: 2
+  jumpForce: 5.9
   diamonds: 0
-  playerLives: 3
-  playerSpeed: 5
-  rotationSpeed: 450
-  isGrounded: 0
+  playerLives: 15
+  playerSpeed: 11
+  rotationSpeed: 216
 --- !u!111 &1582744171
 Animation:
   m_ObjectHideFlags: 0
@@ -7929,6 +7928,10 @@ PrefabInstance:
     - target: {fileID: 1265941696515362991, guid: ae310b12bf0d0804daf274c9a83524a5, type: 3}
       propertyPath: m_Name
       value: Platform level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265941696515362991, guid: ae310b12bf0d0804daf274c9a83524a5, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 1934955646496999957, guid: ae310b12bf0d0804daf274c9a83524a5, type: 3}
       propertyPath: m_RootOrder
