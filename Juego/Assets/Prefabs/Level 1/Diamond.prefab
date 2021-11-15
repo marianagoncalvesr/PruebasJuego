@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b726b1cb212ab245a71291d857fdb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  Sonido: {fileID: 449397219091035092, guid: 6707865d0bb810f4ba898df5be9b1e8c, type: 3}
 --- !u!1 &8112293931062526070
 GameObject:
   m_ObjectHideFlags: 0

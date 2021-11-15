@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class DiamondController : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] GameObject Sonido;
 
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("Player"))
         {
+            Instantiate(Sonido);
             Destroy(this.gameObject);
         }
     }
