@@ -32,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+         
         }
     }
     void Movement()
@@ -44,27 +44,16 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
-
-        if (ejeV != 0)
-            Debug.Log("V:" + ejeV);
+        
         transform.Translate(playerSpeed * ejeV * Time.deltaTime * transform.forward, Space.World);
-        Debug.Log("H:" + ejeH);
+
         this.transform.Rotate(Vector3.up * ejeH * rotationSpeed * Time.deltaTime);
 
-        //if (ejeH == 1 || ejeH == -1)
-        //{
-        //    if (ejeH != 0)
-        //       
-        //    Quaternion toRotation = Quaternion.LookRotation(playerMovement, Vector3.up);
-
-        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        //}
-
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("touch");
         if (other.gameObject.CompareTag("Floor"))
         {
             playerLives -= 1;

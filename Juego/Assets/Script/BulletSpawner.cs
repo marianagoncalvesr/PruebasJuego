@@ -7,9 +7,9 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject player;
 
-    private float waitTime = 2.0f;
-    private float timer = 0.0f;
-    private float playerDistance = 15f;
+    [SerializeField] float waitTime = 2.0f;
+    [SerializeField] float timer = 0.0f;
+    [SerializeField] float playerDistance = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +23,15 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Vector3 distancia = (player.transform.position - transform.position);
-
-        if (distancia.magnitude < playerDistance && timer > waitTime) 
+        if (player != null)
         {
-            Instantiate(bullet, transform.position, transform.rotation);
-            timer = 0;
+            Vector3 distancia = (player.transform.position - transform.position);
+
+            if (distancia.magnitude < playerDistance && timer > waitTime)
+            {
+                Instantiate(bullet, transform.position, transform.rotation);
+                timer = 0;
+            }
         }
     }
 

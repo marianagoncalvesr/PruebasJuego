@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLookAt : MonoBehaviour
 {
-    [SerializeField] GameObject player; 
+    [SerializeField] GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,10 @@ public class EnemyLookAt : MonoBehaviour
 
     void LookAtPlayer()
     {
-        Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-        transform.rotation = newRotation;
+        if (player != null)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+            transform.rotation = newRotation;
+        }
     }
 }
