@@ -1509,7 +1509,7 @@ MonoBehaviour:
   diamonds: 0
   playerLives: 3
   playerSpeed: 11
-  rotationSpeed: 450
+  rotationSpeed: 150
   isGrounded: 0
 --- !u!4 &491953011 stripped
 Transform:
