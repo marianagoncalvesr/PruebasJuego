@@ -40,9 +40,6 @@ public class RotateController : MonoBehaviour
             case speed.Rotation3:
                 transform.Rotate(5f, 0, 0f * Time.deltaTime);
                 break;
-            default:
-                Debug.Log("No se asigno una velocidad de rotacion");
-                break;
 
         }
     }
