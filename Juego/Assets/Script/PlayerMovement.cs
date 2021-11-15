@@ -116,6 +116,24 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+        if (diamonds > 7)
+        {
+            if (other.gameObject.CompareTag("Portal"))
+            {
+                Debug.Log("Terminaste el nivel");
+                transform.position = new Vector3(-42.4f, 4f, -41.6f);
+            }
+        }
+
+        if (other.gameObject.CompareTag("Portal"))
+        {
+           if(diamonds < 8)
+            {
+                Debug.Log("Te faltan diamantes para terminar el nivel");
+            }
+        }
+
+
 
 
     }

@@ -9,6 +9,7 @@ TagManager:
   - Diamond
   - FloorEnd
   - Trigger
+  - Portal
   layers:
   - Default
   - TransparentFX
