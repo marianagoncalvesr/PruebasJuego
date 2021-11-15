@@ -41,12 +41,14 @@ public class PlayerMovement : MonoBehaviour
         float ejeV = Input.GetAxis("Vertical");
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
-        playerMovement.Normalize();
-        transform.Translate(playerSpeed * Time.deltaTime * playerMovement, Space.World);
+    
+        if(ejeV != 0)
 
-        if (playerMovement != Vector3.zero)
+         rb.AddForce(playerSpeed * ejeV * transform.forward);
+            
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            Quaternion toRotation = Quaternion.LookRotation(playerMovement, Vector3.up);
+            Quaternion toRotation = Quaternion.LookRotation(new Vector3(ejeH,0,0), Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
