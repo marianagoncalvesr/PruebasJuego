@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    [SerializeField] TextMesh contador;
+    [SerializeField] TMPro.TextMeshProUGUI contador;
      TMPro.TextMeshPro cantidad;
 
     private void Start()
