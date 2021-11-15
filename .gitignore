@@ -40,3 +40,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *\Logs\
+Juego/Logs/shadercompiler-UnityShaderCompiler.exe0.log
