@@ -3,6 +3,9 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+[Ll]ogs/
+Logs/
+logs/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -15,7 +18,7 @@ ExportedObj/
 *.unityproj
 *.sln
 *.suo
-*.tmp
+*.tmp	
 *.user
 *.userprefs
 *.pidb
@@ -24,6 +27,7 @@ ExportedObj/
 *.pdb
 *.opendb
 *.VC.db
+*.log
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -35,4 +39,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-Juego/Logs/AssetImportWorker0.log
+*\Logs\
