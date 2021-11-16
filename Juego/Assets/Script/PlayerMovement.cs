@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Velocidades y fuerzas")]
     public Vector3 jump;
     public float jumpForce = 2.0f;
-    public float jumpTime = 3.0f;
+    public float jumpTime = 1.0f;
     public float timer = 0;
 
 
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 2.0f, 0.0f);
+        jump = new Vector3(0.0f, 2f, 0.0f);
 
     }
 
