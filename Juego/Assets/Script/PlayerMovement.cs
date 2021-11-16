@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Velocidades y fuerzas")]
     public Vector3 jump;
     public float jumpForce = 2.0f;
-    public float jumpTime =3.0f; 
-    public float timer = 0; 
+    public float jumpTime = 3.0f;
+    public float timer = 0;
 
 
     [Header("Salud")]
@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int diamonds = 0;
 
     [Header("Vidas")]
-    [SerializeField] private int playerLives = 3;
+    [SerializeField] private int playerLives = 3; 
+
+    [SerializeField] private int playerSpeed = 3;
+    [SerializeField] private int rotationSpeed = 3;
 
 
     Animator anim; 
@@ -71,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if(ejeV!=0 || ejeH != 0)
         {
             anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
 
         }
         else

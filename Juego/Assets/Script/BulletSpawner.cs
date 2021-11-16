@@ -19,24 +19,24 @@ public class BulletSpawner : MonoBehaviour
     {
         player = GameObject.Find("Fox");
 
-        InvokeRepeating("Spawner", 0.3f, 0.3f);
+     //   InvokeRepeating("Spawner", 0.3f, 0.3f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //timer += Time.deltaTime;
-        //if (player != null)
-        //{
-        //    Vector3 distancia = (player.transform.position - transform.position);
+        timer += Time.deltaTime;
+        if (player != null)
+        {
+            Vector3 distancia = (player.transform.position - transform.position);
 
-        //    if (distancia.magnitude < playerDistance && timer > waitTime)
-        //    {
-        //        Instantiate(bullet, transform.position, transform.rotation);
-        //        timer = 0;
-        //    }
-        //}
+            if (distancia.magnitude < playerDistance && timer > waitTime)
+            {
+                Instantiate(bullet, transform.position, transform.rotation);
+                timer = 0;
+            }
+        }
     }
 
     /// <summary>
