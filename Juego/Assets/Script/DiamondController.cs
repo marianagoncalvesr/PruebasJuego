@@ -12,6 +12,11 @@ public class DiamondController : MonoBehaviour
     {
         cantidadDiamantes = 0;
     }
+
+    /// <summary>
+    /// Interaccion con Player
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
 
@@ -22,5 +27,6 @@ public class DiamondController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
 
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BulletSpawner : MonoBehaviour
 {
+    [Header("GameObjects Asociados")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject player;
 
+    [Header("Velocidades y variables")]
     [SerializeField] float waitTime = 2.0f;
     [SerializeField] float timer = 0.0f;
     [SerializeField] float playerDistance = 15f;
@@ -16,9 +18,9 @@ public class BulletSpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Fox");
-        
 
-        //timer = 2;
+        InvokeRepeating("Spawner", 0.3f, 0.3f);
+
     }
 
     // Update is called once per frame
@@ -37,28 +39,16 @@ public class BulletSpawner : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// Instancia el prefab de la bala
+    /// </summary>
     void Spawner()
     {
         Instantiate(bullet, transform.position, transform.rotation);
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
-
-        //if (player.gameObject)
-        //{
-        //    Debug.Log("trigger2");
-        //    InvokeRepeating("Spawner", 3f, repeatRate);
-
-
-        //}
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!IsInvoking("Spawner"))
-                InvokeRepeating("Spawner", 0.3f, 0.3f);
-        }
+        Debug.Log("trigger");  
     }
 }

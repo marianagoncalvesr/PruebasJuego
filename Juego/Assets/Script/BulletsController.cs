@@ -15,15 +15,19 @@ public class BulletsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         Direction();
     }
+
+    /// <summary>
+    /// Direccion y velocidad de la bala. Cuando llega a un limite, se elimina
+    /// </summary>
     void Direction()
     {
 
         transform.Translate(bulletSpeed * Time.deltaTime * Vector3.forward);
         if (this.transform.position.z < -100 || this.transform.position.z > 100 ||
-       this.transform.position.x < -100 || this.transform.position.x > 100)
+            this.transform.position.x < -100 || this.transform.position.x > 100)
         {
             Destroy(this.gameObject);
         }
