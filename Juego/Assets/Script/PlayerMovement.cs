@@ -7,24 +7,25 @@ public class PlayerMovement : MonoBehaviour
     [Header("Velocidades y fuerzas")]
     public Vector3 jump;
     public float jumpForce = 2.0f;
-    public float jumpTime = 3.0f;
+    public float jumpTime = 0.5f;
     public float timer = 0;
 
 
-    [Header("Salud")]
-    [SerializeField] private int health = 10;
+    [Header("Salud")] public int health = 10;
 
     [Header("Cantidad de Diamantes")]
     [SerializeField] int diamonds = 0;
 
     [Header("Vidas")]
-    [SerializeField] private int playerLives = 3; 
+    [SerializeField] public int playerLives = 3;
 
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 3;
 
+    [SerializeField] private Canvas canvas;
 
-    Animator anim; 
+
+    Animator anim;
 
     Rigidbody rb;
 
@@ -39,15 +40,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor")) { 
-             anim.SetBool("isJumping", false);
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            anim.SetBool("isJumping", false);
         }
     }
-   
+
     void Update()
     {
         timer += Time.deltaTime;
-        
+
         Movement();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -71,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
-        if(ejeV!=0 || ejeH != 0)
+        if (ejeV != 0 || ejeH != 0)
         {
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
@@ -96,23 +98,22 @@ public class PlayerMovement : MonoBehaviour
         {
             playerLives -= 1;
             transform.position = new Vector3(-42.4f, 4f, -41.6f);
-        }
 
-        if (playerLives < 1)
-        {
-            Destroy(this.gameObject);
+            if (playerLives < 1)
+            {
+                Destroy(this.gameObject);
+            }
         }
-
-        if (other.gameObject.CompareTag("Diamond"))
+        else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
 
         }
-
-        if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("enemyco colision");
+            Debug.Log("enemy colision");
 
+            Destroy(canvas.transform.GetChild(health+1).gameObject);
             health -= 1;
 
             if (health < 1)
@@ -120,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 playerLives -= 1;
                 transform.position = new Vector3(-42.4f, 4f, -41.6f);
                 health += 10;
+                canvas.GetComponent<CanvasController>().DibujarVida();
             }
 
         }
