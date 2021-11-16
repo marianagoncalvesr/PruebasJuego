@@ -18,6 +18,9 @@ public class EnemyLookAt : MonoBehaviour
         LookAtPlayer();
     }
 
+    /// <summary>
+    /// Hace que mi enemigo vea a mi Player, sin moverse
+    /// </summary>
     void LookAtPlayer()
     {
         Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
