@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Vector3 jump;
     public float jumpForce = 2.0f;
+    public float jumpTime =3.0f; 
+    public float timer = 0; 
 
     [SerializeField] private int health = 10;
 
@@ -17,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int rotationSpeed = 450;
 
     Animator anim; 
-    private bool isGrounded;
 
     Rigidbody rb;
     void Start()
@@ -31,30 +32,23 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor")) { 
-            isGrounded = true;
-            anim.SetBool("isJumping", false);
+             anim.SetBool("isJumping", false);
         }
     }
    
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            isGrounded = false;
-            anim.SetBool("isJumping", true);
-        }
-    }
-
     void Update()
     {
+        timer += Time.deltaTime;
+        
         Movement();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isGrounded == true)
+            if (timer > jumpTime)
             {
+                anim.SetBool("isJumping", true);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-
+                timer = 0;
             }
         }
     }
@@ -65,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
-        if(playerMovement != Vector3.zero)
+        if(ejeV!=0 || ejeH != 0)
         {
             anim.SetBool("isRunning", true);
 
