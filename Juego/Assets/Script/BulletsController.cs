@@ -15,7 +15,6 @@ public class BulletsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Direction();
     }
 
@@ -31,5 +30,10 @@ public class BulletsController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
     }
 }

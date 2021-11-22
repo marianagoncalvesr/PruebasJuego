@@ -10,6 +10,7 @@ TagManager:
   - FloorEnd
   - Trigger
   - Portal
+  - Collectable
   layers:
   - Default
   - TransparentFX

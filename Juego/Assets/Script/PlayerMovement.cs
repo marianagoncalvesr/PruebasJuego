@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PlayerMovement : MonoBehaviour
 {
+
+    public event Action evento;
     [Header("Velocidades y fuerzas")]
     public Vector3 jump;
     public float jumpForce = 2.0f;
@@ -18,36 +20,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int diamonds = 0;
 
     [Header("Vidas")]
-    [SerializeField] private int playerLives = 3; 
+    [SerializeField] private int playerLives = 3;
 
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 3;
 
+    public Canvas canvas;
 
-    Animator anim; 
+    Animator anim;
 
     Rigidbody rb;
+
+    private Stack<GameObject> collectables;
 
 
     void Start()
     {
+        collectables = new Stack<GameObject>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
-
+        evento += canvas.GetComponent<CanvasController>().Damage;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor")) { 
-             anim.SetBool("isJumping", false);
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            anim.SetBool("isJumping", false);
         }
     }
-   
+
     void Update()
     {
         timer += Time.deltaTime;
-        
+
         Movement();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -59,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 timer = 0;
             }
         }
+
     }
 
     /// <summary>
@@ -71,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
-        if(ejeV!=0 || ejeH != 0)
+        if (ejeV != 0 || ejeH != 0)
         {
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
@@ -96,23 +104,24 @@ public class PlayerMovement : MonoBehaviour
         {
             playerLives -= 1;
             transform.position = new Vector3(-42.4f, 4f, -41.6f);
+        
         }
 
-        if (playerLives < 1)
-        {
-            Destroy(this.gameObject);
-        }
 
-        if (other.gameObject.CompareTag("Diamond"))
+        else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
 
         }
 
-        if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Collectable"))
         {
-            Debug.Log("enemyco colision");
+            collectables.Push(other.gameObject);
+        }
 
+       else if (other.gameObject.CompareTag("Enemy"))
+        {
+            evento.Invoke();
             health -= 1;
 
             if (health < 1)
@@ -123,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
+
         if (diamonds > 7)
         {
             if (other.gameObject.CompareTag("Portal"))
@@ -138,6 +148,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Te faltan diamantes para terminar el nivel");
             }
+        }
+
+
+        if (playerLives < 1)
+        {
+            Destroy(this.gameObject);
         }
     }
 

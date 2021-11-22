@@ -749,6 +749,7 @@ MonoBehaviour:
   playerLives: 3
   playerSpeed: 10
   rotationSpeed: 250
+  canvas: {fileID: 0}
 --- !u!1 &2350366473403614538
 GameObject:
   m_ObjectHideFlags: 0
