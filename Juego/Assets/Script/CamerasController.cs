@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamerasController : MonoBehaviour
 {
     public GameObject[] cameras;
-    public GameObject playerPosition;
+    
     bool camaraAutomatica;
     int camaraActiva;
     int ultimaCamaraUsada;
@@ -36,12 +36,12 @@ public class CamerasController : MonoBehaviour
 
         if (camaraAutomatica == true)
         {
-            if (playerPosition.transform.position.x > 0)
+            if (player.transform.position.x > 0)
             {
                 camaraActiva = 0;
 
             }
-            if (player.transform.position.z < 10 && player.transform.position.x > 47 && playerPosition.transform.position.x < 85)
+            if (player.transform.position.z < 10 && player.transform.position.x > 47 && player.transform.position.x < 85)
             {
                 camaraActiva = 1;
               

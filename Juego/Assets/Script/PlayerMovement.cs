@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
 
+        StartP();
+
     }
 
     private void OnCollisionEnter(Collision collision)
