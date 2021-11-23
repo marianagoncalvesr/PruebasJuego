@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("FloorEnd"))
         {
             playerLives -= 1;
-            transform.position = startPosition.transform.position;
+            StartP();
         }
 
         if (playerLives < 1)
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             if (other.gameObject.CompareTag("Portal"))
             {
                 Debug.Log("Terminaste el nivel");
-                transform.position = new Vector3(-42.4f, 4f, -41.6f);
+                StartP();
             }
         }
 
@@ -144,5 +144,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    private void StartP()
+    {
+        transform.position = startPosition.transform.position;
+    }
 }
