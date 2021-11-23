@@ -30,12 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField] private GameObject startPosition;
     private Stack<GameObject> collectables;
 
 
     void Start()
     {
         collectables = new Stack<GameObject>();
+        startPosition = GameObject.FindWithTag("StartPosition");
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
@@ -102,8 +104,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("FloorEnd"))
         {
             playerLives -= 1;
-            transform.position = new Vector3(-42.4f, 4f, -41.6f);
-        
+            StartP();
+        }
+
+        if (playerLives < 1)
+        {
+            Destroy(this.gameObject);
         }
 
 
@@ -139,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
             if (other.gameObject.CompareTag("Portal"))
             {
                 Debug.Log("Terminaste el nivel");
-                transform.position = new Vector3(-42.4f, 4f, -41.6f);
+                StartP();
             }
         }
 
@@ -158,5 +164,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    private void StartP()
+    {
+        transform.position = startPosition.transform.position;
+    }
 }
