@@ -5,7 +5,6 @@ using UnityEngine;
 public class CamerasController : MonoBehaviour
 {
     public GameObject[] cameras;
-    public GameObject playerPosition;
     bool camaraAutomatica;
     int camaraActiva;
     int ultimaCamaraUsada;
@@ -20,28 +19,28 @@ public class CamerasController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         camaraActiva = 0;
         ultimaCamaraUsada = 0;
-        camaraAutomatica = false;
+        camaraAutomatica = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         AutoCamera();
-       CamerawithBottons();
+       //CamerawithBottons();
     }
 
     private void AutoCamera()
     {
-        camaraAutomatica = !camaraAutomatica;
+        //camaraAutomatica = !camaraAutomatica;
 
         if (camaraAutomatica == true)
         {
-            if (playerPosition.transform.position.x > 0)
+            if (player.transform.position.x > 0)
             {
                 camaraActiva = 0;
 
             }
-            if (player.transform.position.z < 10 && player.transform.position.x > 47 && playerPosition.transform.position.x < 85)
+            if (player.transform.position.z < 28 && player.transform.position.x < 21 && player.transform.position.x > -15)
             {
                 camaraActiva = 1;
               
