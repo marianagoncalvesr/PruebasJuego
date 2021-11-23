@@ -28,9 +28,12 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField] private GameObject startPosition;
+
 
     void Start()
     {
+        startPosition = GameObject.FindWithTag("StartPosition");
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
@@ -95,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("FloorEnd"))
         {
             playerLives -= 1;
-            transform.position = new Vector3(-42.4f, 4f, -41.6f);
+            transform.position = startPosition.transform.position;
         }
 
         if (playerLives < 1)
@@ -111,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("enemyco colision");
+            Debug.Log("enemy colision");
 
             health -= 1;
 

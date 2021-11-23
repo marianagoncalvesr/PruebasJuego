@@ -10,6 +10,8 @@ TagManager:
   - FloorEnd
   - Trigger
   - Portal
+  - Camera
+  - StartPosition
   layers:
   - Default
   - TransparentFX
