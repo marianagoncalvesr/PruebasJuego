@@ -27,7 +27,7 @@ public class CamerasController : MonoBehaviour
     void Update()
     {
         AutoCamera();
-        //CamerawithBottons();
+       CamerawithBottons();
     }
 
     private void AutoCamera()

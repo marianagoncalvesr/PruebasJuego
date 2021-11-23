@@ -122,7 +122,6 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-            Debug.Log("ultimo:" + collectables.Peek().name);
             canvas.GetComponent<CanvasController>().UpdateItems(collectables);
         }
 
@@ -156,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Te faltan diamantes para terminar el nivel");
             }
         }
-
 
         if (playerLives < 1)
         {

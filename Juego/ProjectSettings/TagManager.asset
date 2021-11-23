@@ -12,6 +12,8 @@ TagManager:
   - Portal
   - Camera
   - StartPosition
+  - Collectable
+  - ItemsRequired
   layers:
   - Default
   - TransparentFX

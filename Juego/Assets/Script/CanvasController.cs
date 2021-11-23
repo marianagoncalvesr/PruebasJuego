@@ -9,8 +9,6 @@ public class CanvasController : MonoBehaviour
     TMPro.TextMeshPro cantidad;
     public Image damage;
     public Image itemToUse;
-    public Image nextItem; 
-    private GameObject gameobjectToUse;
     public float timer = 0;
     public Sprite[] sprites;
 
@@ -43,15 +41,24 @@ public class CanvasController : MonoBehaviour
 
     public void UpdateItems(Stack<GameObject> items)
     {
-        foreach (Sprite sprite in sprites)
+        if (items.Count == 0)
         {
-            if( items.Peek().name.Contains(sprite.name))
+            itemToUse.gameObject.SetActive(false);
+        }
+        else
+        {
+            foreach (Sprite sprite in sprites)
             {
-                itemToUse.sprite = null;
-                itemToUse.sprite = sprite;
+                if (items.Peek().name.Contains(sprite.name))
+                {
+                    itemToUse.gameObject.SetActive(true);
+                    itemToUse.sprite = null;
+                    itemToUse.sprite = sprite;
+                }
             }
         }
-       
+
+
     }
 
 }
