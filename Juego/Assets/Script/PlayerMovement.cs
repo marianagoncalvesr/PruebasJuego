@@ -116,7 +116,8 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-            canvas.GetComponent<CanvasController>().Damage();
+            Debug.Log("ultimo:" + collectables.Peek().name);
+            canvas.GetComponent<CanvasController>().UpdateItems(collectables);
         }
 
        else if (other.gameObject.CompareTag("Enemy"))

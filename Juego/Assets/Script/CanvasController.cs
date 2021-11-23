@@ -8,7 +8,12 @@ public class CanvasController : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI contador;
     TMPro.TextMeshPro cantidad;
     public Image damage;
+    public Image itemToUse;
+    public Image nextItem; 
+    private GameObject gameobjectToUse;
     public float timer = 0;
+    public Sprite[] sprites;
+
 
     private void Start()
     {
@@ -32,13 +37,21 @@ public class CanvasController : MonoBehaviour
     public void Damage()
     {
         damage?.gameObject.SetActive(true);
-        
+
 
     }
 
     public void UpdateItems(Stack<GameObject> items)
     {
-
+        foreach (Sprite sprite in sprites)
+        {
+            if( items.Peek().name.Contains(sprite.name))
+            {
+                itemToUse.sprite = null;
+                itemToUse.sprite = sprite;
+            }
+        }
+       
     }
 
 }
