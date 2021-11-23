@@ -5,7 +5,6 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public event Action evento;
     [Header("Velocidades y fuerzas")]
     public Vector3 jump;
     public float jumpForce = 2.0f;
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
-        evento += canvas.GetComponent<CanvasController>().Damage;
+     
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -117,11 +116,12 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
+            canvas.GetComponent<CanvasController>().Damage();
         }
 
        else if (other.gameObject.CompareTag("Enemy"))
         {
-            evento.Invoke();
+            canvas.GetComponent<CanvasController>().Damage();
             health -= 1;
 
             if (health < 1)

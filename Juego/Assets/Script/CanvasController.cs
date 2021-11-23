@@ -9,6 +9,7 @@ public class CanvasController : MonoBehaviour
     TMPro.TextMeshPro cantidad;
     public Image damage;
     public float timer = 0;
+
     private void Start()
     {
 
@@ -32,6 +33,11 @@ public class CanvasController : MonoBehaviour
     {
         damage?.gameObject.SetActive(true);
         
+
+    }
+
+    public void UpdateItems(Stack<GameObject> items)
+    {
 
     }
 
