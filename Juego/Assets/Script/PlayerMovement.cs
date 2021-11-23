@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 2.0f;
     public float jumpTime = 1.0f;
     public float timer = 0;
+    private float protectionTimer = 0;
 
 
     [Header("Salud")]
@@ -25,13 +26,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int rotationSpeed = 3;
 
     public Canvas canvas;
-
     Animator anim;
-
     Rigidbody rb;
 
     [SerializeField] private GameObject startPosition;
     private Stack<GameObject> collectables;
+
+    public Light isProtected;
 
 
     void Start()
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
-     
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,7 +68,34 @@ public class PlayerMovement : MonoBehaviour
                 timer = 0;
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (collectables.Count > 0)
+            {
+                switch (collectables.Pop().name)
+                {
+                    case "Shield":
+                        isProtected.gameObject.SetActive(true);
+                        break;
+                    case "HealthPlusRed":
+                        Debug.Log("isHealing");
+                        break;
+                    default:
+                        break;
+                }
+                canvas.GetComponent<CanvasController>().UpdateItems(collectables);
+            }
+        }
 
+        if (isProtected.gameObject.activeSelf)
+        {
+            protectionTimer += Time.deltaTime;
+        }
+        if(protectionTimer > 5)
+        {
+            isProtected.gameObject.SetActive(false);
+            protectionTimer = 0;
+        }
     }
 
     /// <summary>
@@ -125,17 +153,21 @@ public class PlayerMovement : MonoBehaviour
             canvas.GetComponent<CanvasController>().UpdateItems(collectables);
         }
 
-       else if (other.gameObject.CompareTag("Enemy"))
+        else if (other.gameObject.CompareTag("Enemy"))
         {
-            canvas.GetComponent<CanvasController>().Damage();
-            health -= 1;
-
-            if (health < 1)
+            if(isProtected.gameObject.activeSelf != true)
             {
-                playerLives -= 1;
-                transform.position = new Vector3(-42.4f, 4f, -41.6f);
-                health += 10;
+                canvas.GetComponent<CanvasController>().Damage();
+                health -= 1;
+
+                if (health < 1)
+                {
+                    playerLives -= 1;
+                    transform.position = new Vector3(-42.4f, 4f, -41.6f);
+                    health += 10;
+                }
             }
+        
 
         }
 

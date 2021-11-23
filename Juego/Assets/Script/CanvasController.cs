@@ -9,6 +9,7 @@ public class CanvasController : MonoBehaviour
     TMPro.TextMeshPro cantidad;
     public Image damage;
     public Image itemToUse;
+    public TMPro.TextMeshProUGUI mensaje;
     public float timer = 0;
     public Sprite[] sprites;
 
@@ -43,7 +44,8 @@ public class CanvasController : MonoBehaviour
     {
         if (items.Count == 0)
         {
-            itemToUse.gameObject.SetActive(false);
+            itemToUse.gameObject.SetActive(false); 
+            mensaje.gameObject.SetActive(false);
         }
         else
         {
@@ -52,6 +54,7 @@ public class CanvasController : MonoBehaviour
                 if (items.Peek().name.Contains(sprite.name))
                 {
                     itemToUse.gameObject.SetActive(true);
+                    mensaje.gameObject.SetActive(true);
                     itemToUse.sprite = null;
                     itemToUse.sprite = sprite;
                 }

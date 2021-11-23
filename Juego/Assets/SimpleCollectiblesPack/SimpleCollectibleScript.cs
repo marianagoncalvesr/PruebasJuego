@@ -34,7 +34,7 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
-		
-		Destroy (gameObject);
+
+		this.gameObject.SetActive(false);
 	}
 }
