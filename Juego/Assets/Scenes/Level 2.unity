@@ -948,7 +948,6 @@ MonoBehaviour:
   cameras:
   - {fileID: 37116067}
   - {fileID: 1987474011}
-  playerPosition: {fileID: 0}
   player: {fileID: 0}
 --- !u!4 &598544959
 Transform:
@@ -3396,8 +3395,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987474011}
-  m_LocalRotation: {x: 0.027257202, y: 0.95182455, z: -0.08877582, w: 0.29224288}
-  m_LocalPosition: {x: 43.41748, y: 52.677685, z: 19.616879}
+  m_LocalRotation: {x: 0.08821756, y: 0.90430135, z: -0.22792013, w: 0.35001308}
+  m_LocalPosition: {x: -22.79583, y: 149.199, z: 37.542927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

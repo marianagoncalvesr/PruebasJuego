@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class RotateController : MonoBehaviour
 {
-    enum speed { Rotation1 =1, Rotation2, Rotation3}
+    enum speed { Rotation1 = 1, Rotation2, Rotation3 }
 
     [SerializeField] private speed Rotation;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -32,18 +33,34 @@ public class RotateController : MonoBehaviour
         switch (Rotation)
         {
             case speed.Rotation1:
-                transform.Rotate(1f, 0, 0f * Time.deltaTime);
+                transform.Rotate(0f, 1f, 0f * Time.deltaTime);
                 break;
             case speed.Rotation2:
-                transform.Rotate(3f, 0, 0f * Time.deltaTime);
+                transform.Rotate(0f, 3f, 0f * Time.deltaTime);
                 break;
             case speed.Rotation3:
-                transform.Rotate(5f, 0, 0f * Time.deltaTime);
+                transform.Rotate(0f, 5f, 0f * Time.deltaTime);
                 break;
 
         }
     }
-    
 
-   
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject == player)
+        {
+            player.transform.parent = transform;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject == player)
+        {
+            player.transform.parent = null;
+        }
+
+    }
+
+
 }

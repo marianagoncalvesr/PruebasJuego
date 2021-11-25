@@ -6,15 +6,16 @@ public class EnemigoEsquivar : MonoBehaviour
 {
 
     [SerializeField] Transform[] waypoints;
-    Vector3 siguientePosicion;
-    [SerializeField] float velocidad = 5.0f;
-    [SerializeField] float distanciaCambio = 0.5f;
+    Vector3 nextPosition;
+    [SerializeField] float speed = 5.0f;
+    [SerializeField] float changeDistance = 0.5f;
     [SerializeField] int numeroSiguientePosicion = 0;
+    [SerializeField] int rotationSpeed = 15;
 
     // Start is called before the first frame update
     void Start()
     {
-        siguientePosicion = waypoints[0].position;
+        nextPosition = waypoints[0].position;
     }
 
     // Update is called once per frame
@@ -22,16 +23,18 @@ public class EnemigoEsquivar : MonoBehaviour
     {
          transform.position = Vector3.MoveTowards(
             transform.position,
-            siguientePosicion,
-            velocidad * Time.deltaTime);
+            nextPosition,
+            speed * Time.deltaTime);
+        //transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * rotationSpeed, Space.World);
 
         if (Vector3.Distance(transform.position,
-            siguientePosicion) < distanciaCambio)
+            nextPosition) < changeDistance)
         {
+            transform.Rotate(new Vector3(0, 180, 0));
             numeroSiguientePosicion++;
             if (numeroSiguientePosicion >= waypoints.Length)
                 numeroSiguientePosicion = 0;
-            siguientePosicion =
+            nextPosition =
                 waypoints[numeroSiguientePosicion].position;
 
         }

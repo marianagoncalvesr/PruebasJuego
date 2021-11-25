@@ -748,8 +748,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0432663, y: 1.5215391, z: 2.866104}
-  m_Center: {x: 0.03729248, y: 0.8010772, z: -0.4730066}
+  m_Size: {x: 1.0432663, y: 1.5215397, z: 1.0636635}
+  m_Center: {x: 0.03729248, y: 0.7516012, z: 0.21051598}
 --- !u!54 &1705996798892254269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ MonoBehaviour:
   health: 10
   diamonds: 0
   playerLives: 3
-  playerSpeed: 10
+  playerSpeed: 6
   rotationSpeed: 250
   canvas: {fileID: 0}
   startPosition: {fileID: 0}
