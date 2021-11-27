@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawner : MonoBehaviour
+public class WebSpawner : MonoBehaviour
 {
     [Header("GameObjects Asociados")]
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject web;
     [SerializeField] GameObject player;
 
     [Header("Velocidades y variables")]
     [SerializeField] float waitTime = 2.0f;
     [SerializeField] float timer = 0.0f;
-    [SerializeField] float playerDistance = 15f;
+    [SerializeField] float playerDistance = 25f;
     private float repeatRate = 3.0f;
 
     // Start is called before the first frame update
@@ -25,16 +25,7 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (player != null)
-        {
-            Vector3 distancia = (player.transform.position - transform.position);
-
-            if (distancia.magnitude < playerDistance && timer > waitTime)
-            {
-                Instantiate(bullet, transform.position, transform.rotation);
-                timer = 0;
-            }
-        }
+        PlayerDistance();
     }
 
     /// <summary>
@@ -42,11 +33,20 @@ public class BulletSpawner : MonoBehaviour
     /// </summary>
     void Spawner()
     {
-        Instantiate(bullet, transform.position, transform.rotation);
+        Instantiate(web, transform.position, transform.rotation);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void PlayerDistance()
     {
-        Debug.Log("trigger");  
+        if (player != null)
+        {
+            Vector3 distancia = (player.transform.position - transform.position);
+
+            if (distancia.magnitude < playerDistance && timer > waitTime)
+            {
+                Instantiate(web, transform.position, transform.rotation);
+                timer = 0;
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletsController : MonoBehaviour
+public class WebController : MonoBehaviour
 {
     [SerializeField] private int bulletSpeed = 5;
 
