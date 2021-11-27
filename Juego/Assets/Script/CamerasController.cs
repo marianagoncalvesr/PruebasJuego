@@ -40,7 +40,7 @@ public class CamerasController : MonoBehaviour
                 camaraActiva = 0;
 
             }
-            if (player.transform.position.z < 28 && player.transform.position.x < 21 && player.transform.position.x > -15)
+            if (player.transform.position.z < 25 && player.transform.position.z > 11 && player.transform.position.x < 55 && player.transform.position.x > 20)
             {
                 camaraActiva = 1;
               

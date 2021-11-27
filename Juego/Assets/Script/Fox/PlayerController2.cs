@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class PlayerController2 : MonoBehaviour
 {
 
@@ -37,10 +38,11 @@ public class PlayerController2 : MonoBehaviour
     private void Awake()
     {
         startPosition = GameObject.FindWithTag("StartPosition");
+        StartP();
     }
     void Start()
     {
-        //StartP();
+        
         collectables = new Stack<GameObject>();
 
         anim = GetComponent<Animator>();
@@ -160,6 +162,7 @@ public class PlayerController2 : MonoBehaviour
             if(isProtected.gameObject.activeSelf != true)
             {
                 canvas.GetComponent<CanvasController>().Damage();
+                canvas.GetComponent<CanvasController>().PawsHealth();
                 health -= 1;
 
                 if (health < 1)
@@ -177,9 +180,10 @@ public class PlayerController2 : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-                Debug.Log("Terminaste el nivel");
-                StartP();
+                Debug.Log("Pasaste de nivel!");
+                SceneManager.LoadScene("Level 2");
             }
+            
         }
 
         if (other.gameObject.CompareTag("Portal"))

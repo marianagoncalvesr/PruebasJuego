@@ -12,14 +12,29 @@ public class CanvasController : MonoBehaviour
     public TMPro.TextMeshProUGUI mensaje;
     public float timer = 0;
     public Sprite[] sprites;
+    [SerializeField] private Image paws;
 
 
     private void Start()
     {
-
+        
     }
     // Update is called once per frame
     void Update()
+    {
+        DamageController();
+        contador.text = DiamondController.cantidadDiamantes.ToString();
+    }
+
+    public void PawsHealth()
+    {
+        paws?.gameObject.SetActive(false);
+    }
+    public void Damage()
+    {
+        damage?.gameObject.SetActive(true);
+    }
+    private void DamageController()
     {
         if (damage.gameObject.activeInHierarchy)
         {
@@ -30,14 +45,6 @@ public class CanvasController : MonoBehaviour
                 timer = 0;
             }
         }
-        contador.text = DiamondController.cantidadDiamantes.ToString();
-    }
-
-    public void Damage()
-    {
-        damage?.gameObject.SetActive(true);
-
-
     }
 
     public void UpdateItems(Stack<GameObject> items)
