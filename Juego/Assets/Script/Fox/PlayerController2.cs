@@ -35,10 +35,17 @@ public class PlayerController2 : MonoBehaviour
 
     public Light isProtected;
 
+    public event Action zeroLifesEvent;
+    public event Action<string> warningEvent;
+
+
     private void Awake()
     {
         startPosition = GameObject.FindWithTag("StartPosition");
         StartP();
+        zeroLifesEvent += GameManager.instance.CompleteLevel;
+        warningEvent += MensajeDos;
+
     }
     void Start()
     {
@@ -63,6 +70,10 @@ public class PlayerController2 : MonoBehaviour
         {
             if (timer > jumpTime)
             {
+                warningEvent.Invoke("saltando");
+                MensajeDos("Hola mi nombre es lucas");
+                MensajeDos("hola soy marian");
+
                 anim.SetBool("isJumping", true);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 timer = 0;
@@ -196,7 +207,8 @@ public class PlayerController2 : MonoBehaviour
 
         if (playerLives < 1)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            zeroLifesEvent.Invoke();
         }
     }
 
@@ -211,5 +223,20 @@ public class PlayerController2 : MonoBehaviour
     private void StartP()
     {
         transform.position = startPosition.transform.position;
+    }
+
+    private void MensajeUno()
+    {
+        Debug.Log("Mensaje 1");
+    }
+
+    private void MensajeDos(string mensaje)
+    {
+        Debug.Log(mensaje);
+    }
+
+    private void Saltar()
+    {
+        Debug.Log("Estoy Saltando");
     }
 }

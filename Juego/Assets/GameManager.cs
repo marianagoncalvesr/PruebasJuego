@@ -5,6 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     bool gamePaused = false;
+
+    public static GameManager instance;
+
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
 
