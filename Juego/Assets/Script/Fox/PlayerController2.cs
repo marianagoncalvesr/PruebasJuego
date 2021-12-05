@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 public class PlayerController2 : MonoBehaviour
 {
 
@@ -26,29 +28,68 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 3;
 
-    public Canvas canvas;
+    [SerializeField] private Canvas canvas;
     Animator anim;
     Rigidbody rb;
 
     [SerializeField] private GameObject startPosition;
     private Stack<GameObject> collectables;
 
-    public Light isProtected;
+    private bool isProtected;
+    [SerializeField] GameObject healing;
+
+    [Space]
+    [Header("Events")]
+    [SerializeField] public UnityEvent onTotalDiamantsCollected;
+    [SerializeField] public UnityEvent onLevelNotCompleted;
+    [SerializeField] public UnityEvent onGameStarted;
+
+    public event Action CharacterWithOutLifeEvent;
+    public event Action<string> showInfoScreenEvent;
+    public event Action healingEvent;
 
     private void Awake()
     {
+        CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
+        showInfoScreenEvent += canvas.GetComponent<CanvasController>().ShowMessage;
         startPosition = GameObject.FindWithTag("StartPosition");
         StartP();
+
+        healingEvent += HealingPlayer;
+        healingEvent += ActivateHealingParticles;
+
     }
+
+    private void ActivateHealingParticles()
+    {
+        StartCoroutine(HandleHealingParticles(healing));
+    }
+    private IEnumerator HandleHealingParticles(GameObject healing)
+    {
+        healing.SetActive(true);
+        showInfoScreenEvent.Invoke("Vida restaurada!");
+        yield return new WaitForSeconds(4f);
+        healing.SetActive(false);
+
+    }
+
+
+
+    private void HealingPlayer()
+    {
+        health = 10;
+    }
+
     void Start()
     {
-        
+
         collectables = new Stack<GameObject>();
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
 
+        onGameStarted.Invoke();
     }
 
 
@@ -75,10 +116,11 @@ public class PlayerController2 : MonoBehaviour
                 switch (collectables.Pop().name)
                 {
                     case "Shield":
-                        isProtected.gameObject.SetActive(true);
+                        isProtected = true;
+                        showInfoScreenEvent.Invoke("Shield Activado!");
                         break;
                     case "HealthPlusRed":
-                        Debug.Log("isHealing");
+                        healingEvent.Invoke();
                         break;
                     default:
                         break;
@@ -87,15 +129,23 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
-        if (isProtected.gameObject.activeSelf)
+        if (isProtected)
         {
             protectionTimer += Time.deltaTime;
         }
-        if(protectionTimer > 5)
+        if (protectionTimer > 5)
         {
-            isProtected.gameObject.SetActive(false);
+            isProtected = false;
+            showInfoScreenEvent.Invoke("Shield Desactivado!");
+
             protectionTimer = 0;
         }
+
+        if (health < 2 || playerLives < 2)
+        {
+            CharacterWithOutLifeEvent.Invoke();
+        }
+
     }
 
 
@@ -148,6 +198,9 @@ public class PlayerController2 : MonoBehaviour
         else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
+            showInfoScreenEvent("diamante recogido!");
+            if (diamonds > 9)
+                onTotalDiamantsCollected.Invoke();
 
         }
 
@@ -155,11 +208,13 @@ public class PlayerController2 : MonoBehaviour
         {
             collectables.Push(other.gameObject);
             canvas.GetComponent<CanvasController>().UpdateItems(collectables);
+            showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
+
         }
 
         else if (other.gameObject.CompareTag("Enemy"))
         {
-            if(isProtected.gameObject.activeSelf != true)
+            if (!isProtected)
             {
                 canvas.GetComponent<CanvasController>().Damage();
                 canvas.GetComponent<CanvasController>().PawsHealth();
@@ -171,8 +226,10 @@ public class PlayerController2 : MonoBehaviour
                     transform.position = new Vector3(-42.4f, 4f, -41.6f);
                     health += 10;
                 }
+                showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
+
             }
-        
+
 
         }
 
@@ -180,17 +237,17 @@ public class PlayerController2 : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-                Debug.Log("Pasaste de nivel!");
+                showInfoScreenEvent.Invoke("Pasaste de nivel!");
                 SceneManager.LoadScene("Level 2");
             }
-            
+
         }
 
         if (other.gameObject.CompareTag("Portal"))
         {
             if (diamonds < 8)
             {
-                Debug.Log("Te faltan diamantes para terminar el nivel");
+                onLevelNotCompleted.Invoke();
             }
         }
 

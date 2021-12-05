@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    public Canvas canvas;
+    public int numberOfDiamants = 10;
     bool gamePaused = false;
-    void Start()
-    {
+    public GameObject portal;
 
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+
+        DontDestroyOnLoad(instance);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -33,6 +43,16 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        Debug.Log("JUEGO TERMINADO");
+        
+
     }
+    
+    public void ActivatePortal()
+    {
+        portal.SetActive(true);
+    }
+    
+
+
+
 }

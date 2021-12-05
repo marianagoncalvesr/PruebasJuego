@@ -5,25 +5,47 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    public static CanvasController instance;
+
     [SerializeField] TMPro.TextMeshProUGUI contador;
     TMPro.TextMeshPro cantidad;
     public Image damage;
     public Image itemToUse;
     public TMPro.TextMeshProUGUI mensaje;
+    public TMPro.TextMeshProUGUI infoMessage;
     public float timer = 0;
     public Sprite[] sprites;
     [SerializeField] private Image paws;
 
-
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     private void Start()
     {
-        
+
     }
     // Update is called once per frame
     void Update()
     {
         DamageController();
         contador.text = DiamondController.cantidadDiamantes.ToString();
+    }
+    public void CharacterDanger()
+    { 
+        StartCoroutine(ActivateMessage("Personaje con poca vida!"));
+    }  
+    public void ShowMessage(string message)
+    { 
+        StartCoroutine(ActivateMessage(message));
+    }
+    public IEnumerator ActivateMessage(string text)
+    {
+        infoMessage.text = text;
+        infoMessage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        infoMessage.gameObject.SetActive(false);
     }
 
     public void PawsHealth()
@@ -51,7 +73,7 @@ public class CanvasController : MonoBehaviour
     {
         if (items.Count == 0)
         {
-            itemToUse.gameObject.SetActive(false); 
+            itemToUse.gameObject.SetActive(false);
             mensaje.gameObject.SetActive(false);
         }
         else
