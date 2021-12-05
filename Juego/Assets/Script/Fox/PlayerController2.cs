@@ -104,6 +104,10 @@ public class PlayerController2 : MonoBehaviour
         {
             if (timer > jumpTime)
             {
+                warningEvent.Invoke("saltando");
+                MensajeDos("Hola mi nombre es lucas");
+                MensajeDos("hola soy marian");
+
                 anim.SetBool("isJumping", true);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 timer = 0;
@@ -253,7 +257,8 @@ public class PlayerController2 : MonoBehaviour
 
         if (playerLives < 1)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            zeroLifesEvent.Invoke();
         }
     }
 
@@ -268,5 +273,20 @@ public class PlayerController2 : MonoBehaviour
     private void StartP()
     {
         transform.position = startPosition.transform.position;
+    }
+
+    private void MensajeUno()
+    {
+        Debug.Log("Mensaje 1");
+    }
+
+    private void MensajeDos(string mensaje)
+    {
+        Debug.Log(mensaje);
+    }
+
+    private void Saltar()
+    {
+        Debug.Log("Estoy Saltando");
     }
 }
