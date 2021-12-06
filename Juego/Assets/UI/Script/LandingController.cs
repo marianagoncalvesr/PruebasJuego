@@ -23,6 +23,6 @@ public class LandingController : MonoBehaviour
 
     public void OnClickPlay()
     {
-        SceneManager.LoadScene("Prueba Mariana");
+        SceneManager.LoadScene("Nivel Actual");
     }
 }

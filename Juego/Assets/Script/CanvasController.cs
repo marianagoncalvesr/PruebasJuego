@@ -39,6 +39,7 @@ public class CanvasController : MonoBehaviour
     public void ShowMessage(string message)
     { 
         StartCoroutine(ActivateMessage(message));
+        
     }
     public IEnumerator ActivateMessage(string text)
     {
