@@ -90,13 +90,9 @@ public class PlayerController2 : MonoBehaviour
         if (health < 2 || playerLives < 2)
         {
             CharacterWithOutLifeEvent.Invoke();
-            Debug.Log("Te queda poca vida");
         }
 
     }
-
-
-
 
     /// Metodo que controla el movimiento del Player
     void Movement()
@@ -136,11 +132,10 @@ public class PlayerController2 : MonoBehaviour
         {
             diamonds += 1;
             showInfoScreenEvent("diamante recogido!");
-            Debug.Log("Diamante recogido");
+  
             if (diamonds > 9)
             {
                 onTotalDiamantsCollected.Invoke();
-                Debug.Log("El portal esta activado");
             }
         }
 
@@ -149,8 +144,7 @@ public class PlayerController2 : MonoBehaviour
             collectables.Push(other.gameObject);
             canvas.GetComponent<CanvasController>().UpdateItems(collectables);
             showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
-            Debug.Log("Item recogido");
-
+         
         }
 
         else if (other.gameObject.CompareTag("Enemy"))
@@ -168,7 +162,7 @@ public class PlayerController2 : MonoBehaviour
                     health += 10;
                 }
                 showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
-                Debug.Log($"Lastimado por {other.gameObject.name}!");
+           
 
             }
 
@@ -179,9 +173,8 @@ public class PlayerController2 : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-                showInfoScreenEvent.Invoke("Pasaste de nivel!");
-                Debug.Log("Pasaste de nivel");
-                SceneManager.LoadScene("Level 2");
+                showInfoScreenEvent.Invoke($"NIVEL TERMINADO!! ");
+                GameManager.instance.PauseUnPauseGame(0);
             }
 
         }
@@ -191,7 +184,6 @@ public class PlayerController2 : MonoBehaviour
             if (diamonds < 8)
             {
                 onLevelNotCompleted.Invoke();
-                Debug.Log("te faltan diamantes");
             }
         }
 
@@ -208,7 +200,6 @@ public class PlayerController2 : MonoBehaviour
     {
         transform.position = startPosition.transform.position;
         onGameStarted.Invoke();
-        Debug.Log("Juego comenzado");
     }
     ///Salto
     private void Jump()
@@ -235,11 +226,9 @@ public class PlayerController2 : MonoBehaviour
                     case "Shield":
                         isProtected = true;
                         showInfoScreenEvent.Invoke("Shield Activado!");
-                        Debug.Log("Escudo activado");
                         break;
                     case "HealthPlusRed":
                         healingEvent.Invoke();
-                        Debug.Log("Curado");
                         break;
                     default:
                         break;
@@ -256,8 +245,6 @@ public class PlayerController2 : MonoBehaviour
         {
             isProtected = false;
             showInfoScreenEvent.Invoke("Shield Desactivado!");
-            Debug.Log("Escudo desactivado");
-
             protectionTimer = 0;
         }
     }
@@ -279,7 +266,6 @@ public class PlayerController2 : MonoBehaviour
     {
         healing.SetActive(true);
         showInfoScreenEvent.Invoke("Vida restaurada!");
-        Debug.Log("Vida restaurada");
         yield return new WaitForSeconds(4f);
         healing.SetActive(false);
 

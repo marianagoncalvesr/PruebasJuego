@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void PauseUnPauseGame(int time)
+    public void PauseUnPauseGame(int time)
     {
         gamePaused = !gamePaused;
         Time.timeScale = time;
