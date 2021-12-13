@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   gradingMode:
     overrideState: 1
     value: 1
@@ -59,7 +59,7 @@ MonoBehaviour:
     value: 67
   colorFilter:
     overrideState: 1
-    value: {r: 1, g: 0, b: 0.5568628, a: 1}
+    value: {r: 1, g: 0.32452828, b: 0.46475273, a: 1}
   hueShift:
     overrideState: 0
     value: 0
