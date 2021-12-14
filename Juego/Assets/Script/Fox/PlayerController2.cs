@@ -46,6 +46,8 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] public UnityEvent onLevelNotCompleted;
     [SerializeField] public UnityEvent onGameStarted;
 
+    public float DiamondsQuantity { get => diamonds;}
+
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
