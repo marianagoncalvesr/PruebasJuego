@@ -28,7 +28,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 3;
 
-    [SerializeField] private Canvas canvas;
+    //[SerializeField] private Canvas canvas;
     Animator anim;
     Rigidbody rb;
 
@@ -57,8 +57,8 @@ public class PlayerController2 : MonoBehaviour
         startPosition = GameObject.FindWithTag("StartPosition");
        
 
-        CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
-        showInfoScreenEvent += canvas.GetComponent<CanvasController>().ShowMessage;
+        //CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
+        //showInfoScreenEvent += canvas.GetComponent<CanvasController>().ShowMessage;
 
         healingEvent += HealingPlayer;
         healingEvent += ActivateHealingParticles;
@@ -144,7 +144,7 @@ public class PlayerController2 : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-            canvas.GetComponent<CanvasController>().UpdateItems(collectables);
+          //  canvas.GetComponent<CanvasController>().UpdateItems(collectables);
             showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
          
         }
@@ -153,8 +153,8 @@ public class PlayerController2 : MonoBehaviour
         {
             if (!isProtected)
             {
-                canvas.GetComponent<CanvasController>().Damage();
-                canvas.GetComponent<CanvasController>().PawsHealth();
+               // canvas.GetComponent<CanvasController>().Damage();
+               // canvas.GetComponent<CanvasController>().PawsHealth();
                 health -= 1;
 
                 if (health < 1)
@@ -235,7 +235,7 @@ public class PlayerController2 : MonoBehaviour
                     default:
                         break;
                 }
-                canvas.GetComponent<CanvasController>().UpdateItems(collectables);
+               // canvas.GetComponent<CanvasController>().UpdateItems(collectables);
             }
         }
 

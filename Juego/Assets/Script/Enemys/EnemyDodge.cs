@@ -23,7 +23,6 @@ public class EnemyDodge : Enemy
             transform.position,
             nextPosition,
             speed * Time.deltaTime);
-        //transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime * rotationSpeed, Space.World);
 
         if (Vector3.Distance(transform.position,
             nextPosition) < changeDistance)

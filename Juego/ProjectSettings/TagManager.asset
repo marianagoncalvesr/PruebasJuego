@@ -15,6 +15,7 @@ TagManager:
   - Collectable
   - ItemsRequired
   - Wall
+  - Platform
   layers:
   - Default
   - TransparentFX
