@@ -7,14 +7,17 @@ public class Bosses : MonoBehaviour
     [SerializeField] protected EnemyData myData;
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject centerPosition;
+    //[SerializeField] private GameObject weakPoint;
+    [SerializeField] private int health = 10;
 
-
+    
 
 
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
         transform.position = centerPosition.transform.position;
+     
     }
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class Bosses : MonoBehaviour
     void Update()
     {
         FollowPlayer();
+        DestroyBoss();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,6 +59,25 @@ public class Bosses : MonoBehaviour
 
     }
 
+    //private void OnCollisionEnter(Collision player)
+    //{
+    //    if (weakPoint)
+    //    {
+    //        health -= 1;
+    //    }
+    //}
 
-    
+    public void Health()
+    {
+        health -= 1;
+    }
+
+    private void DestroyBoss()
+    {
+        if(health == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

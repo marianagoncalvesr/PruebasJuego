@@ -22,22 +22,26 @@ public class PlatformController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        WayPoints();
+    }
+
+    private void WayPoints()
+    {
         transform.position = Vector3.MoveTowards(
-           transform.position,
-           nextPosition,
-           speed * Time.deltaTime);
+   transform.position,
+   nextPosition,
+   speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position,
-            nextPosition) < changeDistance)
+    nextPosition) < changeDistance)
         {
-            //transform.Rotate(new Vector3(0, 180, 0));
             numberNextPosition++;
 
             if (numberNextPosition >= waypoints.Length)
-            
+
                 numberNextPosition = 0;
-                nextPosition =
-                    waypoints[numberNextPosition].position;
+            nextPosition =
+                waypoints[numberNextPosition].position;
 
         }
     }

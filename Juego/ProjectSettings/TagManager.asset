@@ -16,6 +16,8 @@ TagManager:
   - ItemsRequired
   - Wall
   - Platform
+  - WeakPoint
+  - Boss
   layers:
   - Default
   - TransparentFX
