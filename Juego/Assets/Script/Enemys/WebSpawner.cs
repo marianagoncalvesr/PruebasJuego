@@ -11,7 +11,7 @@ public class WebSpawner : MonoBehaviour
     [Header("Velocidades y variables")]
     [SerializeField] float waitTime = 2.0f;
     [SerializeField] float timer = 0.0f;
-    [SerializeField] float playerDistance = 25f;
+    [SerializeField] float playerDistance = 15f;
     private float repeatRate = 3.0f;
 
     // Start is called before the first frame update
@@ -40,9 +40,9 @@ public class WebSpawner : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 distancia = (player.transform.position - transform.position);
+            Vector3 distance = (player.transform.position - transform.position);
 
-            if (distancia.magnitude < playerDistance && timer > waitTime)
+            if (distance.magnitude < playerDistance && timer > waitTime)
             {
                 Instantiate(web, transform.position, transform.rotation);
                 timer = 0;

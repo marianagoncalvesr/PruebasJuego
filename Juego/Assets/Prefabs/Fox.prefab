@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 1705996798892254269}
   - component: {fileID: 1705996798892254258}
   - component: {fileID: 1705996798892254270}
-  - component: {fileID: 1705996798892254271}
+  - component: {fileID: 6373949023920762349}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Player
@@ -711,7 +711,7 @@ Transform:
   m_GameObject: {fileID: 2333300756557151750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.4, y: 19.7, z: 61.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 6000565191333510503}
   - {fileID: 1713577170458859201}
@@ -822,7 +822,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &1705996798892254271
+--- !u!114 &6373949023920762349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -831,21 +831,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2333300756557151750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e461b5079a0cb42b22c427f674c3af, type: 3}
+  m_Script: {fileID: 11500000, guid: 71ec21fa8cb0eb24faacc656857802f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {x: 0, y: 0, z: 0}
-  jumpForce: 7
+  jumpForce: 6
   jumpTime: 1
   timer: 0
   health: 10
   diamonds: 0
   playerLives: 3
   playerSpeed: 6
-  rotationSpeed: 250
-  canvas: {fileID: 0}
+  rotationSpeed: 150
   startPosition: {fileID: 0}
-  isProtected: {fileID: 0}
+  healing: {fileID: 0}
+  onTotalDiamantsCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  onLevelNotCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2350366473403614538
 GameObject:
   m_ObjectHideFlags: 0

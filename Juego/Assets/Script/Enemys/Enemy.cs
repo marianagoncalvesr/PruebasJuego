@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float speed = 5.0f;
     [SerializeField] protected float changeDistance = 0.5f;
 
+    Vector3 temp;
+    
+
 
     private void Awake()
     {
@@ -23,5 +26,17 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DestroySpider()
+    {
+        temp = transform.localScale;
+        temp.y -= 0.5f;
+        transform.localScale = temp;
+
+        if(temp.y == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

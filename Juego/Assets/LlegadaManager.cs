@@ -12,9 +12,9 @@ public class LlegadaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        process.profile.TryGetSettings(out color);
+       // process.profile.TryGetSettings(out color);
 
-        color.postExposure.value = player.GetComponent<PlayerController2>().DiamondsQuantity;
+        //color.postExposure.value = player.GetComponent<PlayerController2>().DiamondsQuantity;
 
     }
 }
