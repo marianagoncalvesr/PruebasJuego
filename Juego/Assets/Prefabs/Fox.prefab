@@ -841,7 +841,7 @@ MonoBehaviour:
   health: 10
   diamonds: 0
   playerLives: 3
-  playerSpeed: 6
+  playerSpeed: 8
   rotationSpeed: 150
   startPosition: {fileID: 0}
   healing: {fileID: 0}

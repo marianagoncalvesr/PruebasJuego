@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Null Level.unity
     guid: fc94f9f7494ee7442be21764142aaa6e
+  - enabled: 1
+    path: Assets/Scenes/Prueba Mariana.unity
+    guid: 9cc3ccaef9ddad948a929b137ae629c8
   m_configObjects: {}

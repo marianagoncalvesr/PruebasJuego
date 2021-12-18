@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2943174175878777091}
   - component: {fileID: 4546899426399556997}
   - component: {fileID: 4546899426399556996}
-  - component: {fileID: 192786060277914658}
+  - component: {fileID: 4285993554816062849}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -114,8 +114,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5000123942785213111, guid: af973c5fc4e32664fb97349dfc921073, type: 3}
---- !u!135 &192786060277914658
-SphereCollider:
+--- !u!65 &4285993554816062849
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -125,5 +125,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.17457
-  m_Center: {x: 0, y: 1.0968652, z: 0.17092323}
+  m_Size: {x: 3.6088562, y: 0.44078255, z: 3.2963867}
+  m_Center: {x: 0.020904541, y: 2.1419687, z: 0.17119217}

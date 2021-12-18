@@ -19,6 +19,7 @@ TagManager:
   - WeakPoint
   - Boss
   - Portal1
+  - Portal Final
   layers:
   - Default
   - TransparentFX

@@ -189,6 +189,18 @@ public class PlayerController2 : MonoBehaviour
             }
         }
 
+        if (other.gameObject.CompareTag("Portal1"))
+        {
+            SceneManager.LoadScene("Prueba Mariana");
+        }
+        if (diamonds > 19)
+        {
+            if (other.gameObject.CompareTag("Portal Final"))
+            {
+                SceneManager.LoadScene("Null Level");
+            }
+        }
+
     }
     private void OnCollisionEnter(Collision collision)
     {
