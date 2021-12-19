@@ -24,7 +24,7 @@ public class DiamondController : MonoBehaviour
         {
             cantidadDiamantes++;
             Instantiate(Sonido);
-            Destroy(this.gameObject);
+           Destroy(this.gameObject);
         }
     }
 

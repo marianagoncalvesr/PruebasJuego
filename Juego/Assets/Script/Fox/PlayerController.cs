@@ -5,7 +5,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class PlayerController2 : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     [Header("Velocidades y fuerzas")]
@@ -46,7 +46,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] public UnityEvent onLevelNotCompleted;
     [SerializeField] public UnityEvent onGameStarted;
 
-    public float DiamondsQuantity { get => diamonds;}
+    public float DiamondsQuantity { get => diamonds; }
 
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
@@ -55,15 +55,15 @@ public class PlayerController2 : MonoBehaviour
     private void Awake()
     {
         startPosition = GameObject.FindWithTag("StartPosition");
-       
-
         //CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
-        //showInfoScreenEvent += canvas.GetComponent<CanvasController>().ShowMessage;
-
         healingEvent += HealingPlayer;
         healingEvent += ActivateHealingParticles;
     }
 
+    private void Pepe(string a)
+    {
+
+    }
 
 
     void Start()
@@ -75,7 +75,7 @@ public class PlayerController2 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
 
-        
+
     }
 
 
@@ -134,7 +134,7 @@ public class PlayerController2 : MonoBehaviour
         {
             diamonds += 1;
             showInfoScreenEvent("diamante recogido!");
-  
+
             if (diamonds > 9)
             {
                 onTotalDiamantsCollected.Invoke();
@@ -144,17 +144,16 @@ public class PlayerController2 : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-          //  canvas.GetComponent<CanvasController>().UpdateItems(collectables);
             showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
-         
+
         }
 
         else if (other.gameObject.CompareTag("Enemy"))
         {
             if (!isProtected)
             {
-               // canvas.GetComponent<CanvasController>().Damage();
-               // canvas.GetComponent<CanvasController>().PawsHealth();
+                // canvas.GetComponent<CanvasController>().Damage();
+                // canvas.GetComponent<CanvasController>().PawsHealth();
                 health -= 1;
 
                 if (health < 1)
@@ -164,7 +163,7 @@ public class PlayerController2 : MonoBehaviour
                     health += 10;
                 }
                 showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
-           
+
 
             }
 
@@ -247,7 +246,7 @@ public class PlayerController2 : MonoBehaviour
                     default:
                         break;
                 }
-               // canvas.GetComponent<CanvasController>().UpdateItems(collectables);
+                // canvas.GetComponent<CanvasController>().UpdateItems(collectables);
             }
         }
 
