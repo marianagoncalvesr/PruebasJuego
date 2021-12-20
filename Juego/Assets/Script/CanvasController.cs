@@ -16,11 +16,17 @@ public class CanvasController : MonoBehaviour
     public float timer = 0;
     public Sprite[] sprites;
     [SerializeField] private Image paws;
+    private GameObject player;
 
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+            player = GameObject.FindWithTag("Player");
+            player.GetComponent<PlayerController>().showInfoScreenEvent += ShowMessage;
+        }
+
     }
     private void Start()
     {
@@ -33,13 +39,13 @@ public class CanvasController : MonoBehaviour
         contador.text = DiamondController.cantidadDiamantes.ToString();
     }
     public void CharacterDanger()
-    { 
+    {
         StartCoroutine(ActivateMessage("Personaje con poca vida!"));
-    }  
+    }
     public void ShowMessage(string message)
-    { 
+    {
         StartCoroutine(ActivateMessage(message));
-        
+
     }
     public IEnumerator ActivateMessage(string text)
     {

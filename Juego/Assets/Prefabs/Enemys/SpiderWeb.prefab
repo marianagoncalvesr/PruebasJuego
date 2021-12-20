@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 15
+  spiderDistance: 180
+  timer: 0
+  waitTime: 3
 --- !u!135 &-7787725394137484086
 SphereCollider:
   m_ObjectHideFlags: 0
