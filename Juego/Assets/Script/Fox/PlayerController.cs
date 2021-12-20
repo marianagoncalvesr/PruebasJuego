@@ -89,10 +89,12 @@ public class PlayerController : MonoBehaviour
         Collectables();
         PlayerDeath();
 
-        if (health < 2 || playerLives < 2)
-        {
-            CharacterWithOutLifeEvent.Invoke();
-        }
+
+        // da error en la consola al morirse 2 veces
+        //if (health < 2 || playerLives < 2)
+        //{
+        //    CharacterWithOutLifeEvent.Invoke();
+        //}
 
     }
 
@@ -159,7 +161,7 @@ public class PlayerController : MonoBehaviour
                 if (health < 1)
                 {
                     playerLives -= 1;
-                    transform.position = new Vector3(-42.4f, 4f, -41.6f);
+                    StartP();
                     health += 10;
                 }
                 showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");

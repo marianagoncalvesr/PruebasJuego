@@ -8,7 +8,9 @@ public class WebController : MonoBehaviour
 
     [SerializeField] float spiderDistance = 15f;
     private GameObject spider;
-    [SerializeField] private int timer = 2;
+
+    [SerializeField] private float timer = 0.0f;
+    [SerializeField] float waitTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class WebController : MonoBehaviour
     {
         PlayerDistance();
         Direction();
+
+        timer += Time.deltaTime;
     }
 
     /// <summary>
@@ -45,17 +49,8 @@ public class WebController : MonoBehaviour
 
     void PlayerDistance()
     {
-        //if (spider == null)
-        //{
-        //    Vector3 distance = transform.position + transform.position;
 
-        //    if (distance.magnitude < spiderDistance)
-        //    {
-        //        Destroy(this.gameObject);
-        //    }
-        //}
-
-        if (Vector3.Distance(spider.transform.position, transform.position) > spiderDistance)
+        if (timer > waitTime)
         {
             Destroy(this.gameObject);
         }

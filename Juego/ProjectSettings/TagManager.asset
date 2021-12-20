@@ -20,6 +20,7 @@ TagManager:
   - Boss
   - Portal1
   - Portal Final
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX
