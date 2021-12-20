@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int health = 10;
 
     [Header("Cantidad de Diamantes")]
-    [SerializeField] int diamonds = 0;
+    public int diamonds = 0;
 
     [Header("Vidas")]
     [SerializeField] private int playerLives = 3;
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
+    
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         //CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
         healingEvent += HealingPlayer;
         healingEvent += ActivateHealingParticles;
+        
     }
 
     private void Pepe(string a)
@@ -289,5 +291,10 @@ public class PlayerController : MonoBehaviour
     private void HealingPlayer()
     {
         health = 10;
+    }
+
+    private void Diamonds()
+    {
+        diamonds = 20;
     }
 }
