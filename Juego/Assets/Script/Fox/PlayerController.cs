@@ -211,7 +211,8 @@ public class PlayerController : MonoBehaviour
     /// Posicion inicial del player
     private void StartP()
     {
-        transform.position = startPosition.transform.position;
+        if (startPosition != null)
+            transform.position = startPosition.transform.position;
         onGameStarted.Invoke();
     }
     ///Salto

@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1705996798892254270}
   - component: {fileID: 6373949023920762349}
   m_Layer: 0
-  m_Name: Fox
+  m_Name: FoxPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
