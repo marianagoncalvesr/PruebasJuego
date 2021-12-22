@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool isProtected;
     [SerializeField] GameObject healing;
 
-
+   
 
     [Space]
     [Header("Events")]
@@ -61,12 +61,6 @@ public class PlayerController : MonoBehaviour
         healingEvent += ActivateHealingParticles;
         
     }
-
-    private void Pepe(string a)
-    {
-
-    }
-
 
     void Start()
     {

@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 3d898111054f1dc45a26081c863e4309
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 225197768836342384
+    second: Arc|ArcAction
+  - first:
+      74: -2135610444597525881
+    second: Arc|diamanteAction.001
+  - first:
+      74: 914805333233563642
+    second: Arc|Door LAction
+  - first:
+      74: 6725739844133224651
+    second: Arc|Door LAction.001
+  - first:
+      74: -5399834086104394542
+    second: Arc|Door RAction
+  - first:
+      74: 6077493265892132821
+    second: Arc|Door RAction.001
+  - first:
+      74: -8817488230227262368
+    second: Arc|KeysAction
+  - first:
+      74: -3126643262864833387
+    second: Arc|Wall.001Action
+  - first:
+      74: 5416468622809338706
+    second: Door L|ArcAction
+  - first:
+      74: 1636625292138400386
+    second: Door L|diamanteAction.001
+  - first:
+      74: -8655122736491094267
+    second: Door L|Door LAction
+  - first:
+      74: 3163531492012105847
+    second: Door L|Door LAction.001
+  - first:
+      74: 2205306153805968814
+    second: Door L|Door RAction
+  - first:
+      74: -993951278484828552
+    second: Door L|Door RAction.001
+  - first:
+      74: 2399257554711625941
+    second: Door L|KeysAction
+  - first:
+      74: -7363752000756348327
+    second: Door L|Wall.001Action
+  - first:
+      74: 7328366494380667582
+    second: Door R|ArcAction
+  - first:
+      74: -6801800101856616232
+    second: Door R|diamanteAction.001
+  - first:
+      74: -1851496407876836176
+    second: Door R|Door LAction
+  - first:
+      74: 3936418894447856534
+    second: Door R|Door LAction.001
+  - first:
+      74: 4880845033018309485
+    second: Door R|Door RAction
+  - first:
+      74: 3015846245582169851
+    second: Door R|Door RAction.001
+  - first:
+      74: 9209365065568335191
+    second: Door R|KeysAction
+  - first:
+      74: 6623396339488988465
+    second: Door R|Wall.001Action
+  - first:
+      74: 4518025902505904906
+    second: Keys|ArcAction
+  - first:
+      74: -5576831548234102841
+    second: Keys|diamanteAction.001
+  - first:
+      74: 5376658776721865040
+    second: Keys|Door LAction
+  - first:
+      74: -6519634394508064841
+    second: Keys|Door LAction.001
+  - first:
+      74: 4586054990002117121
+    second: Keys|Door RAction
+  - first:
+      74: 5938493405808229892
+    second: Keys|Door RAction.001
+  - first:
+      74: -8743997317334899428
+    second: Keys|KeysAction
+  - first:
+      74: -7461163609524911293
+    second: Keys|Wall.001Action
+  - first:
+      74: -4338287406945439720
+    second: Wall.001|ArcAction
+  - first:
+      74: 8813420246459133504
+    second: Wall.001|diamanteAction.001
+  - first:
+      74: 3129526951390003816
+    second: Wall.001|Door LAction
+  - first:
+      74: -1828328197640977388
+    second: Wall.001|Door LAction.001
+  - first:
+      74: -6780733351780711257
+    second: Wall.001|Door RAction
+  - first:
+      74: -1245299704826628785
+    second: Wall.001|Door RAction.001
+  - first:
+      74: 6791961291651367054
+    second: Wall.001|KeysAction
+  - first:
+      74: 2401424647168033901
+    second: Wall.001|Wall.001Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

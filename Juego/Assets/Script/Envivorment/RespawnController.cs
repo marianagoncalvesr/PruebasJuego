@@ -26,6 +26,7 @@ public class RespawnController : MonoBehaviour
         {
             Debug.Log("Contacto");
             respawn.transform.position = transform.position;
+            Destroy(this.gameObject);
         }
     }
 }
