@@ -4,8 +4,6 @@
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-Logs/
-logs/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -13,7 +11,7 @@ logs/
 /[Bb]uilds/
 /[Ll]ogs/
 /Logs/
-/logs/
+/Juego/[Ll]ogs/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
