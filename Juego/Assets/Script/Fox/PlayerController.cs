@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
             Jump();
+            Attack();
         }
      
         Collectables();
@@ -110,8 +111,10 @@ public class PlayerController : MonoBehaviour
     public IEnumerator CambiarEstado()
     {
         puedeMoverse = true;
+        anim.SetBool("isRunning", false);
         yield return new WaitForSeconds(3f);
         puedeMoverse = false;
+        
     }
 
     /// Metodo que controla el movimiento del Player
@@ -125,13 +128,13 @@ public class PlayerController : MonoBehaviour
 
         if (ejeV != 0 || ejeH != 0)
         {
-            anim.SetBool("isRunning", true);
-            anim.SetBool("isJumping", false);
+            //anim.SetBool("isRunning", true);
+            //anim.SetBool("isJumping", false);
 
         }
         else
         {
-            anim.SetBool("isRunning", false);
+            //anim.SetBool("isRunning", false);
 
         }
 
@@ -245,6 +248,16 @@ public class PlayerController : MonoBehaviour
                 timer = 0;
             }
         }
+    }
+
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            anim.SetBool("isAttacking", true);
+
+        }
+
     }
     ///funciones de los objetos que se van recolectando
     private void Collectables()

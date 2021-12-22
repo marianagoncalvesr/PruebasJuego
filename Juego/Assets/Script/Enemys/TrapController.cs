@@ -31,11 +31,11 @@ public class TrapController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Colissionando");
+            
             anim.SetBool("Close", true);
             timer = 0;
 
-            player.GetComponent<PlayerController>().CambiarEstado();
+            player.GetComponent<PlayerController>().Stunear();
 
         }
 
