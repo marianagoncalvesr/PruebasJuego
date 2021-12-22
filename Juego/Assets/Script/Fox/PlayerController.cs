@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
+
+    private bool puedeMoverse = false;
     
 
     private void Awake()
@@ -79,9 +81,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
-        Movement();
-        Jump();
+        if(puedeMoverse == false)
+        {
+            Movement();
+            Jump();
+        }
+     
         Collectables();
         PlayerDeath();
 
@@ -92,6 +97,21 @@ public class PlayerController : MonoBehaviour
         //    CharacterWithOutLifeEvent.Invoke();
         //}
 
+    }
+
+    public void Stunear()
+    {
+
+        StartCoroutine(CambiarEstado());
+
+
+    }
+
+    public IEnumerator CambiarEstado()
+    {
+        puedeMoverse = true;
+        yield return new WaitForSeconds(3f);
+        puedeMoverse = false;
     }
 
     /// Metodo que controla el movimiento del Player

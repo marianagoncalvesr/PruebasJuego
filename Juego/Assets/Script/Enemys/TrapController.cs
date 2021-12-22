@@ -9,10 +9,12 @@ public class TrapController : MonoBehaviour
     [SerializeField] private float timer = 0.0f;
 
     GameObject player;
+    PlayerController playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         anim = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
     }
@@ -33,8 +35,8 @@ public class TrapController : MonoBehaviour
             anim.SetBool("Close", true);
             timer = 0;
 
-            player.transform.position = transform.position;
-            
+            player.GetComponent<PlayerController>().CambiarEstado();
+
         }
 
     }
