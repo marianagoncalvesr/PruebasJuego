@@ -157,7 +157,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if(isProtected.gameObject.activeSelf != true)
             {
-                canvas.GetComponent<CanvasController>().Damage();
                 health -= 1;
 
                 if (health < 1)

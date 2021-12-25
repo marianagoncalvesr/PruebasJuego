@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public float jumpTime = 1.0f;
     public float timer = 0;
     private float protectionTimer = 0;
-
+    
 
     [Header("Salud")]
-    [SerializeField] private int health = 10;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth = 10;
 
     [Header("Cantidad de Diamantes")]
     public int diamonds = 0;
@@ -47,6 +48,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public UnityEvent onGameStarted;
 
     public float DiamondsQuantity { get => diamonds; }
+    public float MaxHealth { get => maxHealth;}
+    public float Health { get => health;}
+    public int PlayerLives { get => playerLives;}
 
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
@@ -68,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         StartP();
         collectables = new Stack<GameObject>();
-
+        health = 10;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);

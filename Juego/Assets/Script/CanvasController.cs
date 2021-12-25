@@ -9,14 +9,16 @@ public class CanvasController : MonoBehaviour
 
     [SerializeField] TMPro.TextMeshProUGUI contador;
     TMPro.TextMeshPro cantidad;
-    public Image damage;
-    public Image itemToUse;
-    public TMPro.TextMeshProUGUI mensaje;
-    public TMPro.TextMeshProUGUI infoMessage;
-    public float timer = 0;
-    public Sprite[] sprites;
-    [SerializeField] private Image paws;
+    //    public Image damage;
+    [SerializeField] Image itemToUse;
+    [SerializeField] TMPro.TextMeshProUGUI mensaje;
+    [SerializeField] TMPro.TextMeshProUGUI infoMessage;
+    [SerializeField] TMPro.TextMeshProUGUI playerLives;
+    [SerializeField] float timer = 0;
+    [SerializeField] Sprite[] sprites;
     private GameObject player;
+    [SerializeField] Image lifeBar;
+
 
     private void Awake()
     {
@@ -35,13 +37,16 @@ public class CanvasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DamageController();
+        lifeBar.fillAmount = player.GetComponent<PlayerController>().Health / player.GetComponent<PlayerController>().MaxHealth;
+        playerLives.text = player.GetComponent<PlayerController>().PlayerLives.ToString();
         contador.text = DiamondController.cantidadDiamantes.ToString();
+
     }
     public void CharacterDanger()
     {
         StartCoroutine(ActivateMessage("Personaje con poca vida!"));
     }
+
     public void ShowMessage(string message)
     {
         StartCoroutine(ActivateMessage(message));
@@ -55,26 +60,6 @@ public class CanvasController : MonoBehaviour
         infoMessage.gameObject.SetActive(false);
     }
 
-    public void PawsHealth()
-    {
-        paws?.gameObject.SetActive(false);
-    }
-    public void Damage()
-    {
-        damage?.gameObject.SetActive(true);
-    }
-    private void DamageController()
-    {
-        if (damage.gameObject.activeInHierarchy)
-        {
-            timer += Time.deltaTime;
-            if (timer > 1f)
-            {
-                damage?.gameObject.SetActive(false);
-                timer = 0;
-            }
-        }
-    }
 
     public void UpdateItems(Stack<GameObject> items)
     {
