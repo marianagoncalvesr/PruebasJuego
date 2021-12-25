@@ -21,6 +21,7 @@ TagManager:
   - Portal1
   - Portal Final
   - RespawnPoint
+  - TailHitBox
   layers:
   - Default
   - TransparentFX

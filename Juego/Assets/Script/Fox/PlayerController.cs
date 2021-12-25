@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float jumpTime = 1.0f;
     public float timer = 0;
     private float protectionTimer = 0;
-    
+
 
     [Header("Salud")]
     [SerializeField] private float health;
@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isProtected;
     [SerializeField] GameObject healing;
-
-   
+    private GameObject tailHitBox;
 
     [Space]
     [Header("Events")]
@@ -48,16 +47,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public UnityEvent onGameStarted;
 
     public float DiamondsQuantity { get => diamonds; }
-    public float MaxHealth { get => maxHealth;}
-    public float Health { get => health;}
-    public int PlayerLives { get => playerLives;}
+    public float MaxHealth { get => maxHealth; }
+    public float Health { get => health; }
+    public int PlayerLives { get => playerLives; }
 
     public event Action CharacterWithOutLifeEvent;
     public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
 
     private bool puedeMoverse = false;
-    
+
 
     private void Awake()
     {
@@ -65,7 +64,7 @@ public class PlayerController : MonoBehaviour
         //CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
         healingEvent += HealingPlayer;
         healingEvent += ActivateHealingParticles;
-        
+
     }
 
     void Start()
@@ -85,31 +84,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(puedeMoverse == false)
+        if (puedeMoverse == false)
         {
             Movement();
             Jump();
             Attack();
         }
-     
+
         Collectables();
         PlayerDeath();
-
-
-        // da error en la consola al morirse 2 veces
-        //if (health < 2 || playerLives < 2)
-        //{
-        //    CharacterWithOutLifeEvent.Invoke();
-        //}
 
     }
 
     public void Stunear()
     {
-
         StartCoroutine(CambiarEstado());
-
-
     }
 
     public IEnumerator CambiarEstado()
@@ -118,7 +107,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isRunning", false);
         yield return new WaitForSeconds(3f);
         puedeMoverse = false;
-        
+
     }
 
     /// Metodo que controla el movimiento del Player
@@ -132,13 +121,13 @@ public class PlayerController : MonoBehaviour
 
         if (ejeV != 0 || ejeH != 0)
         {
-            //anim.SetBool("isRunning", true);
-            //anim.SetBool("isJumping", false);
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
 
         }
         else
         {
-            //anim.SetBool("isRunning", false);
+            anim.SetBool("isRunning", false);
 
         }
 
@@ -177,8 +166,6 @@ public class PlayerController : MonoBehaviour
         {
             if (!isProtected)
             {
-                // canvas.GetComponent<CanvasController>().Damage();
-                // canvas.GetComponent<CanvasController>().PawsHealth();
                 health -= 1;
 
                 if (health < 1)
@@ -187,11 +174,9 @@ public class PlayerController : MonoBehaviour
                     StartP();
                     health += 10;
                 }
-                showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
-
+                // showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
 
             }
-
 
         }
 
@@ -248,6 +233,8 @@ public class PlayerController : MonoBehaviour
             if (timer > jumpTime)
             {
                 anim.SetBool("isJumping", true);
+
+                anim.SetBool("isRunning", false);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 timer = 0;
             }
@@ -259,6 +246,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             anim.SetBool("isAttacking", true);
+            GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = true;
 
         }
 
