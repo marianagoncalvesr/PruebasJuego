@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WebController : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
     [SerializeField] private int bulletSpeed = 5;
 
     [SerializeField] float spiderDistance = 15f;
-    
+
 
     [SerializeField] private float timer = 0.0f;
     [SerializeField] float waitTime = 1.0f;
@@ -15,7 +15,7 @@ public class WebController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,13 +33,8 @@ public class WebController : MonoBehaviour
     void Direction()
     {
 
-        transform.Translate(bulletSpeed * Time.deltaTime * Vector3.forward);
+        transform.Translate(bulletSpeed * Time.deltaTime * Vector3.back);
 
-        //if (this.transform.position.z < -100 || this.transform.position.z > 100 ||
-        //    this.transform.position.x < -100 || this.transform.position.x > 100)
-        //{
-        //    Destroy(this.gameObject);
-        //}
     }
 
     private void OnCollisionEnter(Collision collision)
