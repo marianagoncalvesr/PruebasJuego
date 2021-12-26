@@ -26,7 +26,7 @@ public class CanvasController : MonoBehaviour
         {
             instance = this;
             player = GameObject.FindWithTag("Player");
-            player.GetComponent<PlayerController>().showInfoScreenEvent += ShowMessage;
+           // player.GetComponent<PlayerController>().showInfoScreenEvent += ShowMessage;
         }
 
     }

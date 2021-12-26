@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
     public int PlayerLives { get => playerLives; }
 
     public event Action CharacterWithOutLifeEvent;
-    public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
 
     private bool puedeMoverse = false;
@@ -146,7 +145,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
-            showInfoScreenEvent("diamante recogido!");
+            //showInfoScreenEvent("diamante recogido!");
 
             if (diamonds > 9)
             {
@@ -157,7 +156,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-            showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
+           // showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
 
         }
 
@@ -183,7 +182,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-                showInfoScreenEvent.Invoke($"NIVEL TERMINADO!! ");
+              //  showInfoScreenEvent.Invoke($"NIVEL TERMINADO!! ");
                 GameManager.instance.PauseUnPauseGame(0);
             }
 
@@ -261,7 +260,6 @@ public class PlayerController : MonoBehaviour
                 {
                     case "Shield":
                         isProtected = true;
-                        showInfoScreenEvent.Invoke("Shield Activado!");
                         break;
                     case "HealthPlusRed":
                         healingEvent.Invoke();
@@ -317,7 +315,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator HandleHealingParticles(GameObject healing)
     {
         healing.SetActive(true);
-        showInfoScreenEvent.Invoke("Vida restaurada!");
         yield return new WaitForSeconds(4f);
         healing.SetActive(false);
 
