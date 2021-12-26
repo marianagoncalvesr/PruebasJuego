@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", true);
             anim.SetBool("isJumping", false);
-
         }
         else
         {
@@ -164,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
         else if (other.gameObject.CompareTag("Enemy"))
         {
-            if (!isProtected)
+            if (!isProtected && !anim.GetBool("isAttacking"))
             {
                 health -= 1;
 
@@ -281,11 +280,27 @@ public class PlayerController : MonoBehaviour
         if (protectionTimer > 5)
         {
             isProtected = false;
-            showInfoScreenEvent.Invoke("Shield Desactivado!");
+         //   showInfoScreenEvent.Invoke("Shield Desactivado!");
             protectionTimer = 0;
         }
     }
     /// Accion despues de que se acaban las vidas
+    /// 
+
+    public void AttackProtection()
+    {
+        StartCoroutine(ProtectPlayer());
+
+    }
+    private IEnumerator  ProtectPlayer()
+    {
+        Debug.Log("protegido");
+        isProtected = true;
+        yield return new WaitForSeconds(2);
+        isProtected = false;
+        Debug.Log("Desprotegido");
+    }
+
     private void PlayerDeath()
     {
         if (playerLives < 1)

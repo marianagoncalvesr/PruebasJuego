@@ -5,12 +5,25 @@ using UnityEngine;
 public class AnimationController : StateMachineBehaviour
 {
 
+
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+    //    if (animator.GetBool("isAttacking"))
+    //        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().AttackProtection();
+
+
+    }
+
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         try
         {
-            animator.SetBool("isAttacking", false);
-            GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = false;
+            if (animator.GetBool("isAttacking"))
+            {
+                animator.SetBool("isAttacking", false);
+                GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = false;
+            }
+         
 
         }
         catch (System.Exception ex)
@@ -18,7 +31,7 @@ public class AnimationController : StateMachineBehaviour
 
             throw;
         }
-   
+
 
     }
 
