@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
-            //showInfoScreenEvent("diamante recogido!");
+            GameManager.instance.CurrentStats.Diamants++;
 
             if (diamonds > 9)
             {
@@ -156,8 +156,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-           // showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
-
+            GameManager.instance.CurrentStats.AddPowerUp(other.gameObject.GetComponent<PowerUpItem>());
         }
 
         else if (other.gameObject.CompareTag("Enemy"))
@@ -172,7 +171,6 @@ public class PlayerController : MonoBehaviour
                     StartP();
                     health += 10;
                 }
-                // showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
 
             }
 
@@ -282,8 +280,6 @@ public class PlayerController : MonoBehaviour
             protectionTimer = 0;
         }
     }
-    /// Accion despues de que se acaban las vidas
-    /// 
 
     public void AttackProtection()
     {
