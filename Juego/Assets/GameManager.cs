@@ -6,19 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Canvas canvas;
+
     public int numberOfDiamants = 10;
     bool gamePaused = false;
     public GameObject portal;
-
     private Dictionary<string, Stats> gameStats;
-
-
-
+    private Queue<string> levels;
     private void Awake()
     {
         if (instance == null)
             instance = this;
+        levels = new Queue<string>();
+        levels.Enqueue("Level 1");
+        levels.Enqueue("Level 2");
+        levels.Enqueue("Level 3");
+        levels.Enqueue("Boss");
 
         InitializeGameStats();
         DontDestroyOnLoad(instance);
@@ -42,10 +44,24 @@ public class GameManager : MonoBehaviour
     {
         gamePaused = !gamePaused;
         Time.timeScale = time;
+        Debug.Log(CurrentStats.ToString());
     }
 
     public void CompleteLevel()
     {
+
+    }
+    public void NextLevel()
+    {
+
+        if (SceneManager.GetActiveScene().name == levels.Peek())
+        {
+            levels.Dequeue();
+            if (levels.Count > 0)
+                SceneManager.LoadScene(levels.Peek());
+            else
+                Debug.Log("End game");
+        }
 
 
     }
@@ -55,8 +71,6 @@ public class GameManager : MonoBehaviour
         portal.SetActive(true);
     }
 
-
-
     private void InitializeGameStats()
     {
         gameStats = new Dictionary<string, Stats>();
@@ -65,7 +79,6 @@ public class GameManager : MonoBehaviour
         gameStats.Add("Level 2", new Stats());
         gameStats.Add("Level 3", new Stats());
         gameStats.Add("Boss", new Stats());
-
     }
 
     public void AddElementToStat(EElementType type, int quantity = 0)
@@ -88,7 +101,6 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
-
     }
 
     public void AddElementToStat(PowerUpItem item)

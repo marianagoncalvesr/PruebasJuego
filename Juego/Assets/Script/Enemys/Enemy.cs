@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
         if(temp.y == 0)
         {
             Destroy(this.gameObject);
+            GameManager.instance.CurrentStats.Enemies++;
+
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PortalSwitch : MonoBehaviour
 {
 
-    enum scenes {Intro = 1, Level1, LevelBoss1, Level2}
+    enum scenes { Intro = 1, Level1, LevelBoss1, Level2 }
     [SerializeField] private scenes Change;
     [SerializeField] int kay = 0;
     [SerializeField] int diamonn = 0;
@@ -19,22 +19,34 @@ public class PortalSwitch : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         playerDiamond = player.GetComponent<PlayerController>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+
+        if (other.gameObject.CompareTag("Player") && this.gameObject.CompareTag("Portal Final"))
         {
-            Scenes();
+            // Scenes();
+
+            GameObject gO = GameObject.FindGameObjectWithTag("Canvas");
+            if (gO != null)
+            {
+                gO.GetComponent<CanvasController>().ActivateEndLevelStats();
+
+            }
+
+
         }
     }
+
+
     void Scenes()
     {
         switch (Change)
@@ -42,7 +54,7 @@ public class PortalSwitch : MonoBehaviour
             case scenes.Intro:
                 if (kay == 1)
                     SceneManager.LoadScene("Intro");
-                break;            
+                break;
             case scenes.Level1:
                 SceneManager.LoadScene("Level 1");
                 break;
@@ -51,9 +63,9 @@ public class PortalSwitch : MonoBehaviour
                     SceneManager.LoadScene("Level 1 Boss");
                 break;
             case scenes.Level2:
-                    SceneManager.LoadScene("Level 2");
+                SceneManager.LoadScene("Level 2");
                 break;
-            default:              
+            default:
                 Debug.Log("No se puso una escena");
                 break;
 

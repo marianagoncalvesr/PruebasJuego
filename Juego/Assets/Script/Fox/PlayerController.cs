@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-              //  showInfoScreenEvent.Invoke($"NIVEL TERMINADO!! ");
                 GameManager.instance.PauseUnPauseGame(0);
             }
 
@@ -202,7 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal Final"))
             {
-                SceneManager.LoadScene("Null Level");
+               // SceneManager.LoadScene("Null Level");
             }
         }
 

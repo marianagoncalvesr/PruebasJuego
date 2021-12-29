@@ -4998,7 +4998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49da25fa3e2cdb640a0ffda8d8a0f90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   numberOfDiamants: 10
   portal: {fileID: 259940164}
 --- !u!4 &846742337 stripped
@@ -5300,7 +5299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: Change
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3735943844495370454, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_Name
@@ -5356,6 +5355,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076722541891449452, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285993554816062849, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546899426399556997, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
@@ -8771,6 +8774,10 @@ PrefabInstance:
     - target: {fileID: 2210977119472624329, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210977119472624329, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}

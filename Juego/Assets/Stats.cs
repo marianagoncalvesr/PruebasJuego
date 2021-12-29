@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 public class Stats
 {
@@ -14,7 +15,24 @@ public class Stats
     public int PointsLivesRemain { get => LivesRemain * 10; }
     public List<PowerUpItem> ListPowerUps { get => listPowerUps; }
 
+    public Stats()
+    {
+        listPowerUps = new List<PowerUpItem>();
+    }
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Diamants {Diamants}");
+        sb.AppendLine($"Enemies {Enemies}");
+        sb.AppendLine($"LivesRemain {LivesRemain}");
+        sb.AppendLine("---------------");
+        sb.AppendLine($"PointsDiamants {PointsDiamants}");
+        sb.AppendLine($"PointsEnemies {PointsEnemies}");
+        sb.AppendLine($"PointsLivesRemain {PointsLivesRemain}");
 
+        return sb.ToString();
+
+    }
     public void AddPowerUp(PowerUpItem item)
     {
         try

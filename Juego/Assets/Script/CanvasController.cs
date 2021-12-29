@@ -23,35 +23,47 @@ public class CanvasController : MonoBehaviour
     [SerializeField] GameObject panelStat;
     [SerializeField] GameObject ListContainer;
 
-    public void ActivateEndLevelStats()
+    public void ActivateEndLevelStats(bool enable = true)
     {
-        panelStat.SetActive(true);
+        if (enable)
+            ShowStats();
+        panelStat.SetActive(enable);
 
     }
 
     private void ShowStats()
     {
-        Stats stats = GameManager.instance.CurrentStats;
-
-        itemStat[0].GetComponent<ItemManager>().points.text = stats.PointsDiamants.ToString();
-        itemStat[0].GetComponent<ItemManager>().quantity.text = stats.Diamants.ToString();
-
-        itemStat[1].GetComponent<ItemManager>().points.text = stats.PointsEnemies.ToString();
-        itemStat[1].GetComponent<ItemManager>().quantity.text = stats.Enemies.ToString();
-
-        itemStat[2].GetComponent<ItemManager>().points.text = stats.PointsLivesRemain.ToString();
-        itemStat[2].GetComponent<ItemManager>().quantity.text = stats.LivesRemain.ToString();
-
-        foreach (PowerUpItem item in GameManager.instance.CurrentStats.ListPowerUps)
+        try
         {
-            var listItem = GameObject.Instantiate(templateItemStat, ListContainer.transform);
-            var listItemScript = listItem.GetComponent<ItemManager>();
-            listItemScript.text.text = item.Name.ToString();
-            if (item.Used) listItemScript.quantity.text = "not used"; else listItemScript.quantity.text = "used";
-            listItemScript.points.text = item.Points.ToString();
+            Stats stats = GameManager.instance.CurrentStats;
+
+            itemStat[0].GetComponent<ItemManager>().points.text = stats.PointsDiamants.ToString();
+            itemStat[0].GetComponent<ItemManager>().quantity.text = stats.Diamants.ToString();
+
+            itemStat[1].GetComponent<ItemManager>().points.text = stats.PointsEnemies.ToString();
+            itemStat[1].GetComponent<ItemManager>().quantity.text = stats.Enemies.ToString();
+
+            itemStat[2].GetComponent<ItemManager>().points.text = stats.PointsLivesRemain.ToString();
+            itemStat[2].GetComponent<ItemManager>().quantity.text = stats.LivesRemain.ToString();
+
+            foreach (PowerUpItem item in GameManager.instance.CurrentStats.ListPowerUps)
+            {
+                if (!item.Used)
+                {
+                    var listItem = GameObject.Instantiate(templateItemStat, ListContainer.transform);
+                    var listItemScript = listItem.GetComponent<ItemManager>();
+                    listItemScript.text.text = item.Name.ToString();
+                    listItemScript.points.text = item.Points.ToString();
+                }
+
+            }
+        }
+        catch (System.Exception ex)
+        {
 
         }
-      
+
+
     }
 
     private void Awake()
