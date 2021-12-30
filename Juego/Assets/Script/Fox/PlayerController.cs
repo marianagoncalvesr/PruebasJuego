@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Salud")]
-    [SerializeField] private int health = 10;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth = 10;
 
     [Header("Cantidad de Diamantes")]
     public int diamonds = 0;
@@ -37,8 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isProtected;
     [SerializeField] GameObject healing;
-
-   
+    private GameObject tailHitBox;
 
     [Space]
     [Header("Events")]
@@ -47,13 +47,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public UnityEvent onGameStarted;
 
     public float DiamondsQuantity { get => diamonds; }
+    public float MaxHealth { get => maxHealth; }
+    public float Health { get => health; }
+    public int PlayerLives { get => playerLives; }
 
     public event Action CharacterWithOutLifeEvent;
-    public event Action<string> showInfoScreenEvent;
     public event Action healingEvent;
 
     private bool puedeMoverse = false;
-    
+
 
     private void Awake()
     {
@@ -61,14 +63,14 @@ public class PlayerController : MonoBehaviour
         //CharacterWithOutLifeEvent += canvas.GetComponent<CanvasController>().CharacterDanger;
         healingEvent += HealingPlayer;
         healingEvent += ActivateHealingParticles;
-        
+
     }
 
     void Start()
     {
         StartP();
         collectables = new Stack<GameObject>();
-
+        health = 10;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
@@ -81,31 +83,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(puedeMoverse == false)
+        if (puedeMoverse == false)
         {
             Movement();
             Jump();
             Attack();
         }
-     
+
         Collectables();
         PlayerDeath();
-
-
-        // da error en la consola al morirse 2 veces
-        //if (health < 2 || playerLives < 2)
-        //{
-        //    CharacterWithOutLifeEvent.Invoke();
-        //}
 
     }
 
     public void Stunear()
     {
-
         StartCoroutine(CambiarEstado());
-
-
     }
 
     public IEnumerator CambiarEstado()
@@ -114,7 +106,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isRunning", false);
         yield return new WaitForSeconds(3f);
         puedeMoverse = false;
-        
+
     }
 
     /// Metodo que controla el movimiento del Player
@@ -128,13 +120,12 @@ public class PlayerController : MonoBehaviour
 
         if (ejeV != 0 || ejeH != 0)
         {
-            //anim.SetBool("isRunning", true);
-            //anim.SetBool("isJumping", false);
-
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
         }
         else
         {
-            //anim.SetBool("isRunning", false);
+            anim.SetBool("isRunning", false);
 
         }
 
@@ -154,7 +145,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Diamond"))
         {
             diamonds += 1;
-            showInfoScreenEvent("diamante recogido!");
+            GameManager.instance.CurrentStats.Diamants++;
 
             if (diamonds > 9)
             {
@@ -165,16 +156,13 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Collectable"))
         {
             collectables.Push(other.gameObject);
-            showInfoScreenEvent.Invoke($"{other.gameObject.name} recogido!");
-
+            GameManager.instance.CurrentStats.AddPowerUp(other.gameObject.GetComponent<PowerUpItem>());
         }
 
         else if (other.gameObject.CompareTag("Enemy"))
         {
-            if (!isProtected)
+            if (!isProtected && !anim.GetBool("isAttacking"))
             {
-                // canvas.GetComponent<CanvasController>().Damage();
-                // canvas.GetComponent<CanvasController>().PawsHealth();
                 health -= 1;
 
                 if (health < 1)
@@ -183,11 +171,8 @@ public class PlayerController : MonoBehaviour
                     StartP();
                     health += 10;
                 }
-                showInfoScreenEvent.Invoke($"Lastimado por {other.gameObject.name}!");
-
 
             }
-
 
         }
 
@@ -195,7 +180,6 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal"))
             {
-                showInfoScreenEvent.Invoke($"NIVEL TERMINADO!! ");
                 GameManager.instance.PauseUnPauseGame(0);
             }
 
@@ -217,7 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal Final"))
             {
-                SceneManager.LoadScene("Null Level");
+               // SceneManager.LoadScene("Null Level");
             }
         }
 
@@ -244,6 +228,8 @@ public class PlayerController : MonoBehaviour
             if (timer > jumpTime)
             {
                 anim.SetBool("isJumping", true);
+
+                anim.SetBool("isRunning", false);
                 rb.AddForce(jump * jumpForce, ForceMode.Impulse);
                 timer = 0;
             }
@@ -255,6 +241,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             anim.SetBool("isAttacking", true);
+            GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = true;
 
         }
 
@@ -270,7 +257,6 @@ public class PlayerController : MonoBehaviour
                 {
                     case "Shield":
                         isProtected = true;
-                        showInfoScreenEvent.Invoke("Shield Activado!");
                         break;
                     case "HealthPlusRed":
                         healingEvent.Invoke();
@@ -289,11 +275,25 @@ public class PlayerController : MonoBehaviour
         if (protectionTimer > 5)
         {
             isProtected = false;
-            showInfoScreenEvent.Invoke("Shield Desactivado!");
+         //   showInfoScreenEvent.Invoke("Shield Desactivado!");
             protectionTimer = 0;
         }
     }
-    /// Accion despues de que se acaban las vidas
+
+    public void AttackProtection()
+    {
+        StartCoroutine(ProtectPlayer());
+
+    }
+    private IEnumerator  ProtectPlayer()
+    {
+        Debug.Log("protegido");
+        isProtected = true;
+        yield return new WaitForSeconds(2);
+        isProtected = false;
+        Debug.Log("Desprotegido");
+    }
+
     private void PlayerDeath()
     {
         if (playerLives < 1)
@@ -310,7 +310,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator HandleHealingParticles(GameObject healing)
     {
         healing.SetActive(true);
-        showInfoScreenEvent.Invoke("Vida restaurada!");
         yield return new WaitForSeconds(4f);
         healing.SetActive(false);
 

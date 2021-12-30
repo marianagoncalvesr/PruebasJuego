@@ -9,14 +9,62 @@ public class CanvasController : MonoBehaviour
 
     [SerializeField] TMPro.TextMeshProUGUI contador;
     TMPro.TextMeshPro cantidad;
-    public Image damage;
-    public Image itemToUse;
-    public TMPro.TextMeshProUGUI mensaje;
-    public TMPro.TextMeshProUGUI infoMessage;
-    public float timer = 0;
-    public Sprite[] sprites;
-    [SerializeField] private Image paws;
+    //    public Image damage;
+    [SerializeField] Image itemToUse;
+    [SerializeField] TMPro.TextMeshProUGUI mensaje;
+    [SerializeField] TMPro.TextMeshProUGUI infoMessage;
+    [SerializeField] TMPro.TextMeshProUGUI playerLives;
+    [SerializeField] float timer = 0;
+    [SerializeField] Sprite[] sprites;
+    [SerializeField] Image lifeBar;
     private GameObject player;
+    [SerializeField] GameObject[] itemStat;
+    [SerializeField] GameObject templateItemStat;
+    [SerializeField] GameObject panelStat;
+    [SerializeField] GameObject ListContainer;
+
+    public void ActivateEndLevelStats(bool enable = true)
+    {
+        if (enable)
+            ShowStats();
+        panelStat.SetActive(enable);
+
+    }
+
+    private void ShowStats()
+    {
+        try
+        {
+            Stats stats = GameManager.instance.CurrentStats;
+
+            itemStat[0].GetComponent<ItemManager>().points.text = stats.PointsDiamants.ToString();
+            itemStat[0].GetComponent<ItemManager>().quantity.text = stats.Diamants.ToString();
+
+            itemStat[1].GetComponent<ItemManager>().points.text = stats.PointsEnemies.ToString();
+            itemStat[1].GetComponent<ItemManager>().quantity.text = stats.Enemies.ToString();
+
+            itemStat[2].GetComponent<ItemManager>().points.text = stats.PointsLivesRemain.ToString();
+            itemStat[2].GetComponent<ItemManager>().quantity.text = stats.LivesRemain.ToString();
+
+            foreach (PowerUpItem item in GameManager.instance.CurrentStats.ListPowerUps)
+            {
+                if (!item.Used)
+                {
+                    var listItem = GameObject.Instantiate(templateItemStat, ListContainer.transform);
+                    var listItemScript = listItem.GetComponent<ItemManager>();
+                    listItemScript.text.text = item.Name.ToString();
+                    listItemScript.points.text = item.Points.ToString();
+                }
+
+            }
+        }
+        catch (System.Exception ex)
+        {
+
+        }
+
+
+    }
 
     private void Awake()
     {
@@ -24,7 +72,6 @@ public class CanvasController : MonoBehaviour
         {
             instance = this;
             player = GameObject.FindWithTag("Player");
-            player.GetComponent<PlayerController>().showInfoScreenEvent += ShowMessage;
         }
 
     }
@@ -35,13 +82,16 @@ public class CanvasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DamageController();
+        lifeBar.fillAmount = player.GetComponent<PlayerController>().Health / player.GetComponent<PlayerController>().MaxHealth;
+        playerLives.text = player.GetComponent<PlayerController>().PlayerLives.ToString();
         contador.text = DiamondController.cantidadDiamantes.ToString();
+
     }
     public void CharacterDanger()
     {
         StartCoroutine(ActivateMessage("Personaje con poca vida!"));
     }
+
     public void ShowMessage(string message)
     {
         StartCoroutine(ActivateMessage(message));
@@ -55,26 +105,6 @@ public class CanvasController : MonoBehaviour
         infoMessage.gameObject.SetActive(false);
     }
 
-    public void PawsHealth()
-    {
-        paws?.gameObject.SetActive(false);
-    }
-    public void Damage()
-    {
-        damage?.gameObject.SetActive(true);
-    }
-    private void DamageController()
-    {
-        if (damage.gameObject.activeInHierarchy)
-        {
-            timer += Time.deltaTime;
-            if (timer > 1f)
-            {
-                damage?.gameObject.SetActive(false);
-                timer = 0;
-            }
-        }
-    }
 
     public void UpdateItems(Stack<GameObject> items)
     {
