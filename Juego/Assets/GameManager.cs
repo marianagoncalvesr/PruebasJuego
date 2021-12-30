@@ -11,17 +11,16 @@ public class GameManager : MonoBehaviour
     bool gamePaused = false;
     public GameObject portal;
     private Dictionary<string, Stats> gameStats;
-    private Queue<string> levels;
+    private Queue<Keys> keys;
+    private Keys[] doorKeys;
+    
     private void Awake()
     {
         if (instance == null)
             instance = this;
-        levels = new Queue<string>();
-        levels.Enqueue("Level 1");
-        levels.Enqueue("Level 2");
-        levels.Enqueue("Level 3");
-        levels.Enqueue("Boss");
-
+        
+        keys = new Queue<Keys>();
+        doorKeys = new Keys[3];
         InitializeGameStats();
         DontDestroyOnLoad(instance);
     }
@@ -47,23 +46,10 @@ public class GameManager : MonoBehaviour
         Debug.Log(CurrentStats.ToString());
     }
 
-    public void CompleteLevel()
+  
+    public void GoToIntro()
     {
-
-    }
-    public void NextLevel()
-    {
-
-        if (SceneManager.GetActiveScene().name == levels.Peek())
-        {
-            levels.Dequeue();
-            if (levels.Count > 0)
-                SceneManager.LoadScene(levels.Peek());
-            else
-                Debug.Log("End game");
-        }
-
-
+        SceneManager.LoadScene("intro");
     }
 
     public void ActivatePortal()

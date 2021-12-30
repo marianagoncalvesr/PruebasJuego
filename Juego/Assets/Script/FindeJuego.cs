@@ -10,10 +10,7 @@ public class FindeJuego : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.CompleteLevel();
+        Debug.Log("gameManager.CompleteLevel()");
     }
-
-
-
 
 }
