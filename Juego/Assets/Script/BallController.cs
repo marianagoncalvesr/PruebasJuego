@@ -15,18 +15,24 @@ public class BallController : MonoBehaviour
     enum changes { Movement = 1, Rotate}
 
     [SerializeField] private changes Change;
+
+    [SerializeField] private GameObject player;
+
+
     
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timer();
+       // Timer();
         timer += Time.deltaTime;
         
     }
@@ -44,13 +50,13 @@ public class BallController : MonoBehaviour
         this.transform.Rotate(speedRotation, 0f, 0f * Time.deltaTime);
     }
 
-    void Timer()
-    {
-        if (timer > waitTime)
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    //void Timer()
+    //{
+    //    if (timer > waitTime)
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
     void Type()
     {
@@ -66,4 +72,15 @@ public class BallController : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (player)
+        {
+            player.GetComponent<PlayerController>().Damage();
+        }
+    }
+
+
+
 }

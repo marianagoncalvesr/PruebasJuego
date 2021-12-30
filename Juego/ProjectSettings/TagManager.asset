@@ -23,6 +23,8 @@ TagManager:
   - RespawnPoint
   - TailHitBox
   - Canvas
+  - maxPosition
+  - Ball
   layers:
   - Default
   - TransparentFX

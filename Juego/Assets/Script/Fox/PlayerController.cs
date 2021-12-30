@@ -241,7 +241,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             anim.SetBool("isAttacking", true);
-            GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = true;
+            GameObject.FindWithTag("TailHitBox").GetComponent<SphereCollider>().enabled = true;
 
         }
 
@@ -300,6 +300,12 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if (health == 0)
+        {
+            playerLives -= 1;
+            health = 10;
+            StartP();
+        }
     }
     ///Eventos
 
@@ -322,5 +328,10 @@ public class PlayerController : MonoBehaviour
     private void Diamonds()
     {
         diamonds = 20;
+    }
+
+    public void Damage()
+    {
+        health -= 1;
     }
 }

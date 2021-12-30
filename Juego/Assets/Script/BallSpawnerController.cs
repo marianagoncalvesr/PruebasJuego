@@ -14,11 +14,17 @@ public class BallSpawnerController : MonoBehaviour
     [SerializeField] float playerDistance = 15f;
     private float repeatRate = 2.0f;
 
+    [SerializeField] Transform trigger;
+
+
+
+
+    //[SerializeField] private int rayDistance = 10;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-
     }
 
     // Update is called once per frame
@@ -28,19 +34,12 @@ public class BallSpawnerController : MonoBehaviour
         PlayerDistance();
     }
 
-    /// <summary>
-    /// Instancia el prefab de la bala
-    /// </summary>
-    void Spawner()
-    {
-        Instantiate(ball, transform.position, transform.rotation);
-    }
 
     void PlayerDistance()
     {
         if (player != null)
         {
-            Vector3 distance = (player.transform.position - transform.position);
+            Vector3 distance = (player.transform.position - trigger.transform.position);
 
             if (distance.magnitude < playerDistance && timer > waitTime)
             {
@@ -49,4 +48,8 @@ public class BallSpawnerController : MonoBehaviour
             }
         }
     }
+
+
+
+
 }
