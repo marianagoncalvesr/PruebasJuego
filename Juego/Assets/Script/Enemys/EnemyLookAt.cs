@@ -36,7 +36,4 @@ public class EnemyLookAt : Enemy
         transform.LookAt(targetPosition);
     }
 
-
-
-
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 298178851046062963}
   - component: {fileID: 6957507262493168798}
+  - component: {fileID: 1934543552756288643}
   m_Layer: 0
   m_Name: Ball 2
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +50,20 @@ MonoBehaviour:
   waitTime: 8.5
   speedRotation: 5
   Change: 1
+  player: {fileID: 0}
+--- !u!135 &1934543552756288643
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980298632239291216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.017919
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4374784451122420569
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3787245502824591275}
   m_Layer: 0
   m_Name: Ball 1
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +99,4 @@ MonoBehaviour:
   waitTime: 4
   speedRotation: 5
   Change: 2
+  player: {fileID: 0}

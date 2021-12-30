@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyWeakPoint : MonoBehaviour
 {
     private GameObject player;
-    public Enemy spiderLook;
+    public Enemy spider;
     public int liv = 1;
    
 
@@ -34,7 +34,7 @@ public class EnemyWeakPoint : MonoBehaviour
 
     private void DestroySpider()
     {
-        spiderLook.DestroySpider();
+        spider.DestroySpider();
     }
 
 

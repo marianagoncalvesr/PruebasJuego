@@ -21,7 +21,7 @@ public class AnimationController : StateMachineBehaviour
             if (animator.GetBool("isAttacking"))
             {
                 animator.SetBool("isAttacking", false);
-                GameObject.FindWithTag("TailHitBox").GetComponent<BoxCollider>().enabled = false;
+                GameObject.FindWithTag("TailHitBox").GetComponent<SphereCollider>().enabled = true;
             }
          
 
