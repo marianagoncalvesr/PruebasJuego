@@ -9,7 +9,6 @@ public class TrapController : MonoBehaviour
     [SerializeField] private float timer = 0.0f;
 
     GameObject player;
-    PlayerController playerScript;
     GameObject tail;
     private int damage = 1;
 
