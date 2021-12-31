@@ -12,7 +12,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Velocidades y variables")]
     [SerializeField] float waitTime = 2.0f;
     [SerializeField] float timer = 0.0f;
-    [SerializeField] float playerDistance = 15f;
+    [SerializeField] float playerDistance = 30f;
     private float repeatRate = 3.0f;
 
     // Start is called before the first frame update
