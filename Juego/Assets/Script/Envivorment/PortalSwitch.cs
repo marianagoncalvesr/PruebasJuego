@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
+public enum scenes { Intro = 1, Level1, LevelBoss1, Level2 }
+
 public class PortalSwitch : MonoBehaviour
 {
 
-    enum scenes { Intro = 1, Level1, LevelBoss1, Level2 }
+   
     [SerializeField] private scenes Change;
     [SerializeField] int kay = 0;
     [SerializeField] int diamonn = 0;
