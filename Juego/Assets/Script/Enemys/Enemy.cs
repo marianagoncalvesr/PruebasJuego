@@ -2,44 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected GameObject player;
-    [SerializeField] protected GameObject tail;
     [SerializeField] protected float speed = 5.0f;
     [SerializeField] protected float changeDistance = 0.5f;
-
     Vector3 temp;
-    private int liv = 1;
-
+    [SerializeField] public GameObject Particle { get; set; }
 
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player");
-        player = GameObject.FindWithTag("TailHitBox");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (liv == 0)
-            DestroySpider();
-    }
-
     public void DestroySpider()
     {
         temp = transform.localScale;
         temp.y -= 0.25f;
         transform.localScale = temp;
 
-        if(temp.y == 0)
+        if (temp.y == 0)
         {
+
             Destroy(this.gameObject);
             GameManager.instance.CurrentStats.Enemies++;
 
@@ -47,10 +29,21 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (tail)
+
+        if (other.CompareTag("Enemy"))
         {
-            liv = 0;
+            Particle = GameObject.Find("FX_Explosion");
+            var emission = Particle.GetComponent<ParticleSystem>().emission;
+            emission.enabled = true;
+            Particle.transform.position = other.gameObject.transform.position;
+            Particle.GetComponent<ParticleSystem>().Play();
+
+            Destroy(other.gameObject);
         }
+
+
     }
 
+
 }
+

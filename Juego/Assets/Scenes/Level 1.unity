@@ -13583,6 +13583,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 110419286239768656, guid: 8198522adff30fc49b299af69bff75b8, type: 3}
+      propertyPath: rotationSpeed
+      value: 732
+      objectReference: {fileID: 0}
     - target: {fileID: 8275018092638091521, guid: 8198522adff30fc49b299af69bff75b8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13776,10 +13780,34 @@ PrefabInstance:
       propertyPath: volumeTrigger
       value: 
       objectReference: {fileID: 3110399649452115657}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.52237
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.009182
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -92.76448
+      objectReference: {fileID: 0}
     - target: {fileID: 8309952943882373774, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 3110399649452115657}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.52237
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.009182
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -92.76448
+      objectReference: {fileID: 0}
     - target: {fileID: 8309952944428225570, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Name
       value: ----------Cameras----------

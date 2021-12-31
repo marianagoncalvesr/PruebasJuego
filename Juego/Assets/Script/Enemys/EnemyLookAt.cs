@@ -7,6 +7,7 @@ public class EnemyLookAt : Enemy
 
     GameObject target;
 
+
     private void Awake()
     {
         target = GameObject.FindWithTag("Player");

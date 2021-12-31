@@ -25,6 +25,7 @@ TagManager:
   - Canvas
   - maxPosition
   - Ball
+  - explosion
   layers:
   - Default
   - TransparentFX
