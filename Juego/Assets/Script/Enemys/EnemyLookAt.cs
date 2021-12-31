@@ -6,6 +6,8 @@ public class EnemyLookAt : Enemy
 {
 
     GameObject target;
+    [SerializeField] Transform explosion;
+
 
 
     private void Awake()
@@ -35,6 +37,15 @@ public class EnemyLookAt : Enemy
 
         Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
         transform.LookAt(targetPosition);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("TailHitBox"))
+        {
+            Destroy(this.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+
+        }
     }
 
 }

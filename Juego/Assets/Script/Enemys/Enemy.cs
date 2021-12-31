@@ -7,7 +7,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float speed = 5.0f;
     [SerializeField] protected float changeDistance = 0.5f;
     Vector3 temp;
-    [SerializeField] public GameObject Particle { get; set; }
 
 
     private void Awake()
@@ -27,23 +26,7 @@ public abstract class Enemy : MonoBehaviour
 
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.CompareTag("Enemy"))
-        {
-            Particle = GameObject.Find("FX_Explosion");
-            var emission = Particle.GetComponent<ParticleSystem>().emission;
-            emission.enabled = true;
-            Particle.transform.position = other.gameObject.transform.position;
-            Particle.GetComponent<ParticleSystem>().Play();
-
-            Destroy(other.gameObject);
-        }
-
-
-    }
-
+  
 
 }
 

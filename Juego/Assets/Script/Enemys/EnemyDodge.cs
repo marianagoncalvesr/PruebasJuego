@@ -9,7 +9,7 @@ public class EnemyDodge : Enemy
     Vector3 nextPosition;
     [SerializeField] int numeroSiguientePosicion = 0;
 
-    [SerializeField] public GameObject Particle { get; set; }
+    [SerializeField] public Transform particle;
 
 
     // Start is called before the first frame update
@@ -40,4 +40,16 @@ public class EnemyDodge : Enemy
 
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player") || other.CompareTag("TailHitBox"))
+        {
+
+            Instantiate(particle, transform.position,Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+    }
+
 }

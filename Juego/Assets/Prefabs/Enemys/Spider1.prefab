@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   changeDistance: 0.5
+  explosion: {fileID: 4397334591890123659, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
 --- !u!1 &1444415191813802888
 GameObject:
   m_ObjectHideFlags: 0
