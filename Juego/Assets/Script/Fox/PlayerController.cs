@@ -109,7 +109,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    /// Metodo que controla el movimiento del Player
     void Movement()
     {
         float ejeH = Input.GetAxis("Horizontal");
@@ -117,6 +116,14 @@ public class PlayerController : MonoBehaviour
 
         Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
         playerMovement.Normalize();
+        transform.Translate(playerSpeed * Time.deltaTime * playerMovement, Space.World);
+
+        if (playerMovement != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(playerMovement, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
 
         if (ejeV != 0 || ejeH != 0)
         {
@@ -128,10 +135,30 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isRunning", false);
 
         }
-
-        transform.Translate(playerSpeed * ejeV * Time.deltaTime * transform.forward, Space.World);
-        this.transform.Rotate(Vector3.up * ejeH * rotationSpeed * Time.deltaTime);
     }
+    /// Metodo que controla el movimiento del Player
+    //void Movement()
+    //{
+    //    float ejeH = Input.GetAxis("Horizontal");
+    //    float ejeV = Input.GetAxis("Vertical");
+
+    //    Vector3 playerMovement = new Vector3(ejeH, 0, ejeV);
+    //    playerMovement.Normalize();
+
+    //    if (ejeV != 0 || ejeH != 0)
+    //    {
+    //        anim.SetBool("isRunning", true);
+    //        anim.SetBool("isJumping", false);
+    //    }
+    //    else
+    //    {
+    //        anim.SetBool("isRunning", false);
+
+    //    }
+
+    //    transform.Translate(playerSpeed * ejeV * Time.deltaTime * transform.forward, Space.World);
+    //    this.transform.Rotate(Vector3.up * ejeH * rotationSpeed * Time.deltaTime);
+    //}
     /// Interacciones con otros elementos, como triggers
     private void OnTriggerEnter(Collider other)
     {
