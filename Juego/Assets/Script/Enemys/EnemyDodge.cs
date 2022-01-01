@@ -8,7 +8,9 @@ public class EnemyDodge : Enemy
     [SerializeField] Transform[] waypoints;
     Vector3 nextPosition;
     [SerializeField] int numeroSiguientePosicion = 0;
-    
+
+    [SerializeField] public Transform particle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +18,15 @@ public class EnemyDodge : Enemy
         nextPosition = waypoints[0].position;
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-         transform.position = Vector3.MoveTowards(
-            transform.position,
-            nextPosition,
-            speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(
+           transform.position,
+           nextPosition,
+           speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position,
             nextPosition) < changeDistance)
@@ -36,4 +40,16 @@ public class EnemyDodge : Enemy
 
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player") || other.CompareTag("TailHitBox"))
+        {
+
+            Instantiate(particle, transform.position,Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+
+    }
+
 }
