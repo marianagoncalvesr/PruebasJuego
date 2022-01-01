@@ -11,8 +11,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1099008
-  m_Center: {x: -0.0076841516, y: -0.008158445, z: 0.0060378714}
+  m_Radius: 1.1843218
+  m_Center: {x: -0.0076841516, y: -0.008158445, z: 0.009581884}
 --- !u!114 &56266578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,6 +33,7 @@ MonoBehaviour:
   Change: 2
   activate: 0
   activateRotation: 1
+  activator: {fileID: 0}
 --- !u!1 &4980298632239291216
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +46,7 @@ GameObject:
   - component: {fileID: 2561612233821918765}
   - component: {fileID: 949012858}
   - component: {fileID: 949012856}
+  - component: {fileID: 4853130143380730111}
   m_Layer: 0
   m_Name: GiantBall
   m_TagString: GiantBall
@@ -60,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4980298632239291216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -42.9, y: 24.7, z: 76.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1452153224996553203}
@@ -120,6 +122,21 @@ MonoBehaviour:
   Change: 1
   activate: 0
   activateRotation: 1
+  activator: {fileID: 0}
+--- !u!136 &4853130143380730111
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980298632239291216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 3.0385125
+  m_Height: 10.201817
+  m_Direction: 0
+  m_Center: {x: -0.20623875, y: -0.029463053, z: 0}
 --- !u!1001 &4374784451122420569
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -357,6 +357,11 @@ public class PlayerController : MonoBehaviour
         diamonds = 20;
     }
 
+    public void LostLive()
+    {
+        playerLives -= 1;
+        StartP();
+    }
     public void Damage()
     {
         health -= 1;

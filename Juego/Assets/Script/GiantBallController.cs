@@ -19,15 +19,19 @@ public class GiantBallController : MonoBehaviour
 
     Animator anim;
 
-    [SerializeField] bool activate = false;
-    [SerializeField] bool activateRotation = false;
+    [SerializeField] bool activate = true;
+    [SerializeField] bool activateRotation = true;
+
+    [SerializeField] GameObject activator;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        activate = true;
         player = GameObject.FindWithTag("Player");
+        activator = GameObject.FindWithTag("Activator");
         anim = GetComponent<Animator>();
     }
     private void FixedUpdate()
@@ -63,13 +67,13 @@ public class GiantBallController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (player)
-        {
-            player.GetComponent<PlayerController>().Damage();
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (player)
+    //    {
+    //        player.GetComponent<PlayerController>().Damage();
+    //    }
+    //}
 
     void Type()
     {
@@ -86,11 +90,11 @@ public class GiantBallController : MonoBehaviour
         }
     }
 
-    public void GiantBallActivate()
-    {
-        activate = true;
-        activateRotation = true;
-    }
+    //public void GiantBallActivate()
+    //{
+    //    activate = true;
+    //    activateRotation = true;
+    //}
 
     private void OnCollisionEnter(Collision other)
     {
@@ -98,6 +102,18 @@ public class GiantBallController : MonoBehaviour
         {
             activate = false;
             activateRotation = false;
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player -1 live");
+            player.GetComponent<PlayerController>().LostLive();
+            Destroy(this.gameObject);
+            activator.GetComponent<BallActivatorController>().ThisPosition();
         }
     }
 

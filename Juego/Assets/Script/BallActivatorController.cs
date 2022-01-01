@@ -6,7 +6,13 @@ public class BallActivatorController : MonoBehaviour
 {
     [SerializeField] GameObject giantBall;
     [SerializeField] GameObject ball;
+    [SerializeField] GameObject bigBall;
 
+    [SerializeField] GameObject nextPosition;
+
+
+
+    bool ballActivate = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +23,7 @@ public class BallActivatorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
         
     }
 
@@ -25,11 +32,25 @@ public class BallActivatorController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player colisionando");
-            giantBall.GetComponent<GiantBallController>().GiantBallActivate();
-            ball.GetComponent<GiantBallController>().GiantBallActivate();
+            
+            ballActivate = true;
+            SpawnGiantBall();
+            transform.position = nextPosition.transform.position;
+
         }
+
     }
 
+    void SpawnGiantBall()
+    {
+
+        Instantiate(bigBall);  
+    }
+
+    public void ThisPosition()
+    {
+        transform.position = new Vector3 (-32.8f, 11.4f, 108.3f);
+    }
 
 
 }
