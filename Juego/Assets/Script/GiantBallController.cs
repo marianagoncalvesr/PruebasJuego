@@ -29,19 +29,16 @@ public class GiantBallController : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
-
-
     }
     private void FixedUpdate()
     {
-        if (activate == true)
+        if (activate == true && activateRotation == true)
         {
+            
             Type();
         }
-        else
-        {
 
-        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -50,12 +47,18 @@ public class GiantBallController : MonoBehaviour
     }
     void Rotation()
     {
+        if (activateRotation == true)
+        {
             this.transform.Rotate(speedRotation, 0f, 0f * Time.deltaTime);
+        }
     }
     void Direction()
     {
-        anim.SetBool("Grow", true);
-        transform.Translate(ballSpeed * Time.deltaTime * Vector3.forward);
+        if (activate == true)
+        {
+            anim.SetBool("Grow", true);
+            transform.Translate(ballSpeed * Time.deltaTime * Vector3.forward);
+        }
 
     }
 
@@ -85,19 +88,20 @@ public class GiantBallController : MonoBehaviour
 
     public void GiantBallActivate()
     {
-        //activateRotation = true;
         activate = true;
+        activateRotation = true;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Rock"))
         {
-            Debug.Log("colision con piedra");
             activate = false;
-            //activateRotation = false;
+            activateRotation = false;
         }
     }
+
+
 
 
 }

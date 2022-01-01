@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!135 &56266581
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264401344736254793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1099008
+  m_Center: {x: -0.0076841516, y: -0.008158445, z: 0.0060378714}
+--- !u!114 &56266578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264401344736254793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c1f304913521f44a8f4846d3dfe0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpeed: 10
+  timer: 0
+  waitTime: 7.5
+  speedRotation: 1
+  player: {fileID: 0}
+  Change: 2
+  activate: 0
+  activateRotation: 1
 --- !u!1 &4980298632239291216
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,11 +42,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 298178851046062963}
-  - component: {fileID: 6957507262493168798}
   - component: {fileID: 2561612233821918765}
+  - component: {fileID: 949012858}
+  - component: {fileID: 949012856}
   m_Layer: 0
   m_Name: GiantBall
-  m_TagString: Ball
+  m_TagString: GiantBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,30 +61,12 @@ Transform:
   m_GameObject: {fileID: 4980298632239291216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1452153224996553203}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6957507262493168798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4980298632239291216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0f01c5ded9f1c49811c24f92cf87a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballSpeed: 10
-  timer: 0
-  waitTime: 7.5
-  speedRotation: 5
-  Change: 1
-  player: {fileID: 0}
 --- !u!136 &2561612233821918765
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -65,6 +81,45 @@ CapsuleCollider:
   m_Height: 10.201817
   m_Direction: 0
   m_Center: {x: -0.20623875, y: -0.029463053, z: 0}
+--- !u!95 &949012858
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980298632239291216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 446320aa46bcc2947a27283e6e264f0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &949012856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980298632239291216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c1f304913521f44a8f4846d3dfe0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpeed: 8
+  timer: 0
+  waitTime: 7.5
+  speedRotation: 5
+  player: {fileID: 0}
+  Change: 1
+  activate: 0
+  activateRotation: 1
 --- !u!1001 &4374784451122420569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,8 +199,14 @@ PrefabInstance:
       propertyPath: speedRotation
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3787245502824591275, guid: c100e22da4cca1840bbd23d295912ff9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c100e22da4cca1840bbd23d295912ff9, type: 3}
+--- !u!1 &2264401344736254793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2583551338527195152, guid: c100e22da4cca1840bbd23d295912ff9, type: 3}
+  m_PrefabInstance: {fileID: 4374784451122420569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1452153224996553203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2923204415459842730, guid: c100e22da4cca1840bbd23d295912ff9, type: 3}
