@@ -9,8 +9,10 @@ public class SpikesController : MonoBehaviour
     GameObject player;
 
     [SerializeField] private float tap = 0f;
-    enum spikes { Spikes1 = 1, Spikes2 }
+    enum spikes { Spikes1 = 1, Spikes2, Spikes3 }
     [SerializeField] private spikes Change;
+
+   
 
 
     // Start is called before the first frame update
@@ -24,6 +26,7 @@ public class SpikesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         Type();
     }
 
@@ -65,6 +68,28 @@ public class SpikesController : MonoBehaviour
 
     }
 
+    private void SpikesMovement3()
+    {
+        if (timer < 2)
+        {
+            anim.SetBool("Up", true);
+
+        }
+        if (timer > 2)
+        {
+            anim.SetBool("Up", false);
+
+        }
+
+        if (timer > 4)
+        {
+            timer = 0;
+
+        }
+
+
+    }
+
     void Type()
     {
         switch (Change)
@@ -74,6 +99,9 @@ public class SpikesController : MonoBehaviour
                 break;
             case spikes.Spikes2:
                 SpikesMovement2();
+                break;
+            case spikes.Spikes3:
+                SpikesMovement3();
                 break;
 
             default:

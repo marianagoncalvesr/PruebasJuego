@@ -4141,7 +4141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436948, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436951, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_RootOrder
@@ -8396,7 +8396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436948, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436951, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_RootOrder
@@ -13776,10 +13776,34 @@ PrefabInstance:
       propertyPath: volumeTrigger
       value: 
       objectReference: {fileID: 3110399649452115657}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.39856
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.009632
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -92.76297
+      objectReference: {fileID: 0}
     - target: {fileID: 8309952943882373774, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 3110399649452115657}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.39856
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.009632
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -92.76297
+      objectReference: {fileID: 0}
     - target: {fileID: 8309952944428225570, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Name
       value: ----------Cameras----------

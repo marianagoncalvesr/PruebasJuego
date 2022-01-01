@@ -25,6 +25,10 @@ TagManager:
   - Canvas
   - maxPosition
   - Ball
+  - Cannon
+  - MovingFloor
+  - GiantBall
+  - Rock
   layers:
   - Default
   - TransparentFX
