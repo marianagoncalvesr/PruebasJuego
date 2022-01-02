@@ -43,7 +43,7 @@ public class EnemyDodge : Enemy
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player") || other.CompareTag("TailHitBox"))
+        if ( other.CompareTag("TailHitBox"))
         {
 
             Instantiate(particle, transform.position,Quaternion.identity);

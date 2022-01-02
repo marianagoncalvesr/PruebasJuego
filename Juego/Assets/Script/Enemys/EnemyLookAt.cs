@@ -40,7 +40,7 @@ public class EnemyLookAt : Enemy
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("TailHitBox"))
+        if (other.CompareTag("TailHitBox"))
         {
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
