@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(Vector3.up, ejeH * Time.deltaTime);
 
-        // mouse rotation
+        //// mouse rotation
         heading += Input.GetAxis("Mouse X") * Time.deltaTime* 180;
 
 
@@ -231,75 +231,84 @@ public class PlayerController : MonoBehaviour
     /// Interacciones con otros elementos, como triggers
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("FloorEnd"))
+        try
         {
-            playerLives -= 1;
-            StartP();
-            health = 10;
-        }
-
-        else if (other.gameObject.CompareTag("Diamond"))
-        {
-            diamonds += 1;
-            GameManager.instance.CurrentStats.Diamants++;
-
-            if (diamonds > 9)
+            if (other.gameObject.CompareTag("FloorEnd"))
             {
-                onTotalDiamantsCollected.Invoke();
+                playerLives -= 1;
+                StartP();
+                health = 10;
             }
-        }
 
-        else if (other.gameObject.CompareTag("Collectable"))
-        {
-            collectables.Push(other.gameObject);
-            GameManager.instance.CurrentStats.AddPowerUp(other.gameObject.GetComponent<PowerUpItem>());
-        }
-
-        else if (other.gameObject.CompareTag("Enemy"))
-        {
-            if (!isProtected && !anim.GetBool("isAttacking"))
+            else if (other.gameObject.CompareTag("Diamond"))
             {
-                health -= 1;
+                diamonds += 1;
+                GameManager.instance.CurrentStats.Diamants++;
 
-                if (health < 1)
+                if (diamonds > 9)
                 {
-                    playerLives -= 1;
-                    StartP();
-                    health += 10;
+                    onTotalDiamantsCollected.Invoke();
+                }
+            }
+
+            else if (other.gameObject.CompareTag("Collectable"))
+            {
+                collectables.Push(other.gameObject);
+                GameManager.instance.CurrentStats.AddPowerUp(other.gameObject.GetComponent<PowerUpItem>());
+            }
+
+            else if (other.gameObject.CompareTag("Enemy"))
+            {
+                if (!isProtected && !anim.GetBool("isAttacking"))
+                {
+                    health -= 1;
+
+                    if (health < 1)
+                    {
+                        playerLives -= 1;
+                        StartP();
+                        health += 10;
+                    }
+
                 }
 
             }
 
-        }
+            if (diamonds > 9)
+            {
+                if (other.gameObject.CompareTag("Portal"))
+                {
+                    GameManager.instance.PauseUnPauseGame(0);
+                }
 
-        if (diamonds > 9)
-        {
+            }
+
             if (other.gameObject.CompareTag("Portal"))
             {
-                GameManager.instance.PauseUnPauseGame(0);
+                if (diamonds < 8)
+                {
+                    onLevelNotCompleted.Invoke();
+                }
             }
 
-        }
-
-        if (other.gameObject.CompareTag("Portal"))
-        {
-            if (diamonds < 8)
+            if (other.gameObject.CompareTag("Portal1"))
             {
-                onLevelNotCompleted.Invoke();
+                SceneManager.LoadScene("Prueba Mariana");
             }
-        }
-
-        if (other.gameObject.CompareTag("Portal1"))
-        {
-            SceneManager.LoadScene("Prueba Mariana");
-        }
-        if (diamonds > 19)
-        {
-            if (other.gameObject.CompareTag("Portal Final"))
+            if (diamonds > 19)
             {
-                // SceneManager.LoadScene("Null Level");
+                if (other.gameObject.CompareTag("Portal Final"))
+                {
+                    // SceneManager.LoadScene("Null Level");
+                }
             }
         }
+        catch (Exception)
+        {
+
+           
+        }
+     
 
     }
     private void OnCollisionEnter(Collision collision)

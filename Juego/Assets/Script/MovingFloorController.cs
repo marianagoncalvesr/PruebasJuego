@@ -5,21 +5,33 @@ using UnityEngine;
 public class MovingFloorController : MonoBehaviour
 {
     [SerializeField] private int buttomPress = 0;
-
+    [SerializeField] Transform particles;
+    [SerializeField] Transform particlesPosition;
+    bool particlesActivated;
     Animator anim;
     GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        particlesActivated = false;
         anim = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
+    }
+
+    public void ActivateParticles()
+    {
+        Instantiate(particles, particlesPosition);
+        particlesActivated = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (buttomPress == 2 && particlesActivated == false)
+        {
+            ActivateParticles();
+        }
     }
 
     public void ButtomPress()
@@ -34,7 +46,7 @@ public class MovingFloorController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
             if (buttomPress == 2)
                 anim.SetBool("Up", true);
 
@@ -48,7 +60,7 @@ public class MovingFloorController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            player.transform.parent = null; 
+            player.transform.parent = null;
         }
 
     }
