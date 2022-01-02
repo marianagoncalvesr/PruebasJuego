@@ -42,7 +42,7 @@ public class Stats
         }
         catch (System.Exception ex)
         {
-;
+
         }
     }
 

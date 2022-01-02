@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up, ejeH * Time.deltaTime);
 
         //// mouse rotation
-        heading += Input.GetAxis("Mouse X") * Time.deltaTime* 180;
+        heading += Input.GetAxis("Mouse X") * Time.deltaTime * 180;
 
 
         Quaternion newRotation = Quaternion.Euler(0, heading, 0);
@@ -101,8 +101,8 @@ public class PlayerController : MonoBehaviour
 
         //Animation
 
-        
-        
+
+
 
         if (ejeV != 0 || ejeH != 0)
         {
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-       
+
         //Movement();
 
         timer += Time.deltaTime;
@@ -251,10 +251,9 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (other.gameObject.CompareTag("Collectable"))
+            else if (other.gameObject.CompareTag("Health"))
             {
-                collectables.Push(other.gameObject);
-                GameManager.instance.CurrentStats.AddPowerUp(other.gameObject.GetComponent<PowerUpItem>());
+                health = 10;
             }
 
             else if (other.gameObject.CompareTag("Enemy"))
@@ -291,10 +290,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            //if (other.gameObject.CompareTag("Portal1"))
-            //{
-            //    SceneManager.LoadScene("Prueba Mariana");
-            //}
             if (diamonds > 19)
             {
                 if (other.gameObject.CompareTag("Portal Final"))
@@ -306,9 +301,9 @@ public class PlayerController : MonoBehaviour
         catch (Exception)
         {
 
-           
+
         }
-     
+
 
     }
     private void OnCollisionEnter(Collision collision)
