@@ -35,7 +35,7 @@ public class PortalSwitch : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && this.gameObject.CompareTag("Portal Final"))
         {
-            // Scenes();
+            Scenes();
 
             GameObject gO = GameObject.FindGameObjectWithTag("Canvas");
             if (gO != null)

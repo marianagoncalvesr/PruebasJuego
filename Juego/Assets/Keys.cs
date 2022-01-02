@@ -6,6 +6,7 @@ public class Keys
 {
     private int lvl;
     private bool usedInDoor;
+    private bool picked;
 
     public Keys()
     {
@@ -15,5 +16,5 @@ public class Keys
 
     public int Lvl { get => lvl; }
     public bool UsedInDoor { get => usedInDoor; set => usedInDoor = value; }
-
+    public bool Picked { get => picked; set => picked = value; }
 }
