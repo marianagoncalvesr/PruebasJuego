@@ -19335,6 +19335,10 @@ PrefabInstance:
       propertyPath: volumeTrigger
       value: 
       objectReference: {fileID: 3110399649452115657}
+    - target: {fileID: 8309952943235666469, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.52237
