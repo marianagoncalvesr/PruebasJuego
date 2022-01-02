@@ -8,11 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int numberOfDiamants = 10;
-    bool gamePaused = false;
+    public bool gamePaused = false;
     public GameObject portal;
-    private Dictionary<string, Stats> gameStats;
-
-    private Keys[] doorKeysTotal;   // ya se pusieron en la puerta
+    public Dictionary<string, Stats> gameStats;
+    public Keys[] doorKeysTotal;   // ya se pusieron en la puerta
 
     private void Awake()
     {

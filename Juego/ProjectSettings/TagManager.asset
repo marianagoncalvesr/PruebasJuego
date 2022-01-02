@@ -31,6 +31,8 @@ TagManager:
   - GiantBall
   - MovingFloor
   - Activator
+  - Health
+  - Key
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 114352366165809370}
   - component: {fileID: 82930440331251234}
   - component: {fileID: 135978377405755452}
-  - component: {fileID: 7100971479987484665}
   m_Layer: 2
   m_Name: HealthPlusRed
   m_TagString: Untagged
@@ -208,18 +207,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3367196
   m_Center: {x: 0.000000048428774, y: 0, z: 0}
---- !u!114 &7100971479987484665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932252988361774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe38e542635085499cd6eef4edc0a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: HealthPlusRed
-  used: 0
-  type: 10
