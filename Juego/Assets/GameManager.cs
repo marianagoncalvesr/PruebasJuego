@@ -11,16 +11,15 @@ public class GameManager : MonoBehaviour
     bool gamePaused = false;
     public GameObject portal;
     private Dictionary<string, Stats> gameStats;
-    private Queue<Keys> keys;
-    private Keys[] doorKeys;
-    
+
+    private Keys[] doorKeysTotal;   // ya se pusieron en la puerta
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
-        
-        keys = new Queue<Keys>();
-        doorKeys = new Keys[3];
+
+        doorKeysTotal = new Keys[3];
         InitializeGameStats();
         DontDestroyOnLoad(instance);
     }
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(CurrentStats.ToString());
     }
 
-  
+
     public void GoToIntro()
     {
         SceneManager.LoadScene("intro");
@@ -89,6 +88,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void KeyPicked(int lvl)
+    {
+        for (int i = 0; i < doorKeysTotal.Length; i++)
+        {
+            if (doorKeysTotal[i].Lvl == lvl)
+            {
+                doorKeysTotal[i].UsedInDoor = true;
+            }
+        }
+    }
+
+
+
+
     public void AddElementToStat(PowerUpItem item)
     {
         Stats stats;
@@ -107,9 +120,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Keys[] DoorKeysTotal { get => doorKeysTotal;  }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+
+    public void SaberCuantasLlavesTengo()
+    {
+       Keys[] llaves =  GameManager.instance.doorKeysTotal;
+
+        for (int i = 1; i < llaves.Length + 1; i++)
+        {
+            if(llaves[i].Picked == true && llaves[i].Lvl == i && llaves[i].UsedInDoor)
+            {
+                // dorada;
+            }
+        }
     }
 
 }

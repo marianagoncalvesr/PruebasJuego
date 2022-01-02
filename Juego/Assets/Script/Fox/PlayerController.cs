@@ -291,10 +291,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (other.gameObject.CompareTag("Portal1"))
-            {
-                SceneManager.LoadScene("Prueba Mariana");
-            }
+            //if (other.gameObject.CompareTag("Portal1"))
+            //{
+            //    SceneManager.LoadScene("Prueba Mariana");
+            //}
             if (diamonds > 19)
             {
                 if (other.gameObject.CompareTag("Portal Final"))

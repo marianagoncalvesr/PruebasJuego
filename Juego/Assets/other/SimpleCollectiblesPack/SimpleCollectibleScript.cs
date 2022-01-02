@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SimpleCollectibleScript : MonoBehaviour {
 
-
+	[SerializeField] int lvl;
 
 	public bool rotate; // do you want it to rotate?
 
@@ -34,7 +34,8 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
-
 		this.gameObject.SetActive(false);
+		GameManager.instance.KeyPicked(lvl);
+
 	}
 }
