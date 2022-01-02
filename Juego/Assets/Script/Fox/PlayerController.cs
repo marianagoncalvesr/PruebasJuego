@@ -57,6 +57,67 @@ public class PlayerController : MonoBehaviour
     private bool puedeMoverse = false;
 
 
+    //camera
+
+    [SerializeField] Transform camPivot;
+    [SerializeField] Transform cam;
+    float heading;
+    Vector3 input;
+    Vector3 cameraRotation;
+
+
+    private CharacterController characterController;
+
+    void Prueba()
+    {
+        input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        input = Vector3.ClampMagnitude(input, 1);
+
+        camPivot.rotation = Quaternion.Euler(0, heading, 0);
+
+        Vector3 camF = cam.forward;
+
+        Vector3 camR = cam.right;
+
+        camF.y = 0;
+        camR.y = 0;
+        camF = camF.normalized;
+        camR = camR.normalized;
+
+        transform.position += (camF * input.y + camR * input.x) * playerSpeed * Time.deltaTime;
+
+        //Rotation
+        float ejeH = Input.GetAxis("Horizontal");
+        float ejeV = Input.GetAxis("Vertical");
+
+        transform.Rotate(Vector3.up, ejeH * Time.deltaTime);
+
+        // mouse rotation
+        heading += Input.GetAxis("Mouse X") * Time.deltaTime* 180;
+
+
+        Quaternion newRotation = Quaternion.Euler(0, heading, 0);
+        transform.rotation = newRotation;
+
+        //Animation
+
+        
+        
+
+        if (ejeV != 0 || ejeH != 0)
+        {
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isJumping", false);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+
+        }
+    }
+
+
+
     private void Awake()
     {
         startPosition = GameObject.FindWithTag("StartPosition");
@@ -68,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         StartP();
         collectables = new Stack<GameObject>();
         health = 10;
@@ -75,17 +137,23 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2f, 0.0f);
 
-
     }
 
-
+    private void FixedUpdate()
+    {
+        Prueba();
+    }
 
     void Update()
     {
+
+       
+        //Movement();
+
         timer += Time.deltaTime;
         if (puedeMoverse == false)
         {
-            Movement();
+            //Movement();
             Jump();
             Attack();
         }
@@ -135,6 +203,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isRunning", false);
 
         }
+
     }
     /// Metodo que controla el movimiento del Player
     //void Movement()
@@ -228,7 +297,7 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Portal Final"))
             {
-               // SceneManager.LoadScene("Null Level");
+                // SceneManager.LoadScene("Null Level");
             }
         }
 
@@ -302,7 +371,7 @@ public class PlayerController : MonoBehaviour
         if (protectionTimer > 5)
         {
             isProtected = false;
-         //   showInfoScreenEvent.Invoke("Shield Desactivado!");
+            //   showInfoScreenEvent.Invoke("Shield Desactivado!");
             protectionTimer = 0;
         }
     }
@@ -312,7 +381,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(ProtectPlayer());
 
     }
-    private IEnumerator  ProtectPlayer()
+    private IEnumerator ProtectPlayer()
     {
         Debug.Log("protegido");
         isProtected = true;
