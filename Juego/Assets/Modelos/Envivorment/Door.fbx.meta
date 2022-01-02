@@ -123,6 +123,81 @@ ModelImporter:
   - first:
       74: 2401424647168033901
     second: Wall.001|Wall.001Action
+  - first:
+      74: -8785921887580634393
+    second: Arc|Trap1Action
+  - first:
+      74: -6919517630568948623
+    second: Arc|Trap2Action
+  - first:
+      74: 4244082337102547334
+    second: Door L|Trap1Action
+  - first:
+      74: 3615434187955131051
+    second: Door L|Trap2Action
+  - first:
+      74: -4238716355831957960
+    second: Door R|Trap1Action
+  - first:
+      74: -3255413164428099096
+    second: Door R|Trap2Action
+  - first:
+      74: -7070889048295037951
+    second: Keys|Trap1Action
+  - first:
+      74: 7654748683341784990
+    second: Keys|Trap2Action
+  - first:
+      74: 8456734498552440585
+    second: Wall.001|Trap1Action
+  - first:
+      74: -2352839009343907942
+    second: Wall.001|Trap2Action
+  - first:
+      74: -7985464254564143062
+    second: Wall.002|diamanteAction.001
+  - first:
+      74: -1180176662631963474
+    second: Wall.002|Door LAction.001
+  - first:
+      74: 7414399048021630606
+    second: Wall.002|Door RAction.001
+  - first:
+      74: 3820359852711943973
+    second: Wall.002|Trap1Action
+  - first:
+      74: -5038366737363295084
+    second: Wall.002|Trap2Action
+  - first:
+      74: 7880038996425792443
+    second: Wall.003|diamanteAction.001
+  - first:
+      74: 4146431820357431696
+    second: Wall.003|Door LAction.001
+  - first:
+      74: -7681073633177092135
+    second: Wall.003|Door RAction.001
+  - first:
+      74: -1881032528595785808
+    second: Wall.003|Trap1Action
+  - first:
+      74: -6671777733770627569
+    second: Wall.003|Trap2Action
+  - first:
+      74: -4164779837746467148
+    second: Wall.004|diamanteAction.001
+  - first:
+      74: 8585436169573552488
+    second: Wall.004|Door LAction.001
+  - first:
+      74: 1067656317425616711
+    second: Wall.004|Door RAction.001
+  - first:
+      74: 7471733946103855945
+    second: Wall.004|Trap1Action
+  - first:
+      74: -5518569767543711889
+    second: Wall.004|Trap2Action
   externalObjects: {}
   materials:
     materialImportMode: 2
