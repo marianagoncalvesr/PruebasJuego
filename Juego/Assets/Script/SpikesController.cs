@@ -11,6 +11,11 @@ public class SpikesController : MonoBehaviour
     [SerializeField] private float tap = 0f;
     enum spikes { Spikes1 = 1, Spikes2, Spikes3 }
     [SerializeField] private spikes Change;
+    [SerializeField] int waitTime = 2;
+    [SerializeField] int maxTime = 4;
+
+
+
 
    
 
@@ -50,38 +55,40 @@ public class SpikesController : MonoBehaviour
     }
     private void SpikesMovement2()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            tap += 1;
-
-        }
-        if (tap == 1)
+        if (timer < waitTime)
         {
             anim.SetBool("Up", false);
+
         }
-        if (tap == 2)
+        if (timer > waitTime)
         {
-            
             anim.SetBool("Up", true);
-            tap = 0;
+            
+
+        }
+
+        if (timer > maxTime)
+        {
+            timer = 0;
+
         }
 
     }
 
     private void SpikesMovement3()
     {
-        if (timer < 2)
+        if (timer < waitTime)
         {
             anim.SetBool("Up", true);
 
         }
-        if (timer > 2)
+        if (timer > waitTime)
         {
             anim.SetBool("Up", false);
 
         }
 
-        if (timer > 4)
+        if (timer > maxTime)
         {
             timer = 0;
 
