@@ -26,6 +26,11 @@ TagManager:
   - maxPosition
   - Ball
   - explosion
+  - Rock
+  - Cannon
+  - GiantBall
+  - MovingFloor
+  - Activator
   layers:
   - Default
   - TransparentFX
