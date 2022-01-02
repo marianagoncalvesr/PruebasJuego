@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c1f304913521f44a8f4846d3dfe0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 8
+  ballSpeed: 7
   timer: 0
   waitTime: 7.5
   speedRotation: 5
