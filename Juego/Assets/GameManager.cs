@@ -19,9 +19,20 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        doorKeysTotal = new Keys[3];
+        InitializeKeys();
         InitializeGameStats();
         DontDestroyOnLoad(instance);
+    }
+
+    private void InitializeKeys()
+    {
+        doorKeysTotal = new Keys[3];
+        
+        for (int i = 0; i < doorKeysTotal.Length; i++)
+        {
+            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = false, UsedInDoor = false };
+        }
+
     }
 
     void Update()
@@ -94,7 +105,7 @@ public class GameManager : MonoBehaviour
         {
             if (doorKeysTotal[i].Lvl == lvl)
             {
-                doorKeysTotal[i].UsedInDoor = true;
+                doorKeysTotal[i].Picked = true;
             }
         }
     }
@@ -120,7 +131,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Keys[] DoorKeysTotal { get => doorKeysTotal;  }
+    public Keys[] DoorKeysTotal { get => doorKeysTotal; }
 
     public void QuitGame()
     {
@@ -131,11 +142,11 @@ public class GameManager : MonoBehaviour
 
     public void SaberCuantasLlavesTengo()
     {
-       Keys[] llaves =  GameManager.instance.doorKeysTotal;
+        Keys[] llaves = GameManager.instance.doorKeysTotal;
 
         for (int i = 1; i < llaves.Length + 1; i++)
         {
-            if(llaves[i].Picked == true && llaves[i].Lvl == i && llaves[i].UsedInDoor)
+            if (llaves[i].Picked == true && llaves[i].Lvl == i && llaves[i].UsedInDoor)
             {
                 // dorada;
             }

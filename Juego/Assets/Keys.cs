@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class Keys
 {
-    private int lvl;
-    private bool usedInDoor;
-    private bool picked;
-
-    public Keys()
-    {
-        lvl = 0;
-        usedInDoor = false;
-    }
-
-    public int Lvl { get => lvl; }
-    public bool UsedInDoor { get => usedInDoor; set => usedInDoor = value; }
-    public bool Picked { get => picked; set => picked = value; }
+    public int Lvl { get; set; }
+    public bool Picked { get; set; }
+    public bool UsedInDoor { get; set; }
 }
