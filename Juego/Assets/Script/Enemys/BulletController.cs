@@ -12,10 +12,12 @@ public class BulletController : MonoBehaviour
     [SerializeField] private float timer = 0.0f;
     [SerializeField] float waitTime = 1.0f;
 
+    GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -37,9 +39,13 @@ public class BulletController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("bullet collision");
+            player.GetComponent<PlayerController>().Damage();
+        }
     }
 
     void PlayerDistance()

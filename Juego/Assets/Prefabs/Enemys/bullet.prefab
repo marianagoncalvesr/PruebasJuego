@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3966169425737736972}
   - component: {fileID: 7399711346671997819}
   - component: {fileID: 649827932543995249}
+  - component: {fileID: -6394088551933543110}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -132,3 +133,16 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!65 &-6394088551933543110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173443875112174297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.515471, y: 1.5154711, z: 1.9174484}
+  m_Center: {x: 0, y: 0.00000008940696, z: 0.6471959}
