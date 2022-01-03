@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 8459707858418901977}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1583408707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795007670564271041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 2
+  m_DampingWhenOccluded: 2
+  m_OptimalTargetDistance: 0
 --- !u!1 &6795007672273405238
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,15 +187,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.05506
+      value: -38.74241
       objectReference: {fileID: 0}
     - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.927635
+      value: 12.8671875
       objectReference: {fileID: 0}
     - target: {fileID: 8309952943235666470, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -102.98247
+      value: -93.011475
       objectReference: {fileID: 0}
     - target: {fileID: 8309952943882373774, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Follow
@@ -185,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8309952943882373775, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -93.01149
+      value: -93.011475
       objectReference: {fileID: 0}
     - target: {fileID: 8309952944428225570, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
       propertyPath: m_Name
@@ -240,6 +270,11 @@ PrefabInstance:
 --- !u!4 &6795007672182680943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8309952944428225571, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
+  m_PrefabInstance: {fileID: 3251129805547747660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6795007670564271041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8309952943882373773, guid: 20e06a6ef7e03e7468101601362bd8fa, type: 3}
   m_PrefabInstance: {fileID: 3251129805547747660}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6795007670564271043 stripped
