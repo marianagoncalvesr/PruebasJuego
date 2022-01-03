@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 250;
 
-    //[SerializeField] private Canvas canvas;
     Animator anim;
     Rigidbody rb;
 

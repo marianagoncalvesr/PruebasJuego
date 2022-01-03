@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
 
     public int numberOfDiamants = 10;
     public bool gamePaused = false;
-    public GameObject portal;
-    public Dictionary<string, Stats> gameStats;
-    public Keys[] doorKeysTotal;   // ya se pusieron en la puerta
+
+    Dictionary<string, Stats> gameStats;
+    Keys[] doorKeysTotal;   // ya se pusieron en la puerta
+    public Keys[] DoorKeysTotal { get => doorKeysTotal; }
 
     private void Awake()
     {
@@ -26,10 +27,10 @@ public class GameManager : MonoBehaviour
     private void InitializeKeys()
     {
         doorKeysTotal = new Keys[3];
-        
+
         for (int i = 0; i < doorKeysTotal.Length; i++)
         {
-            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = false, UsedInDoor = false };
+            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = true, UsedInDoor = false };
         }
 
     }
@@ -59,11 +60,6 @@ public class GameManager : MonoBehaviour
     public void GoToIntro()
     {
         SceneManager.LoadScene("intro");
-    }
-
-    public void ActivatePortal()
-    {
-        portal.SetActive(true);
     }
 
     private void InitializeGameStats()
@@ -109,9 +105,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
-
     public void AddElementToStat(PowerUpItem item)
     {
         Stats stats;
@@ -130,7 +123,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Keys[] DoorKeysTotal { get => doorKeysTotal; }
 
     public void QuitGame()
     {
@@ -139,17 +131,21 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void SaberCuantasLlavesTengo()
+    public List<Keys> GetKeysAvailable()
     {
+        List<Keys> keysNotUsed = new List<Keys>();
+
         Keys[] llaves = GameManager.instance.doorKeysTotal;
 
         for (int i = 1; i < llaves.Length + 1; i++)
         {
-            if (llaves[i].Picked == true && llaves[i].Lvl == i && llaves[i].UsedInDoor)
+            if (llaves[i].Picked == true && llaves[i].Lvl == i && !llaves[i].UsedInDoor)
             {
-                // dorada;
+                keysNotUsed.Add(llaves[i]);
             }
         }
+        return keysNotUsed;
+
     }
 
 }
