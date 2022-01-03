@@ -10,9 +10,6 @@ public class BallActivatorController : MonoBehaviour
 
     [SerializeField] GameObject nextPosition;
 
-    [SerializeField] GameObject cam;
-    [SerializeField] GameObject camNewPosition;
-
 
 
     bool ballActivate = false;
@@ -39,7 +36,6 @@ public class BallActivatorController : MonoBehaviour
             ballActivate = true;
             SpawnGiantBall();
             transform.position = nextPosition.transform.position;
-            cam.transform.position = camNewPosition.transform.position;
         }
 
     }
