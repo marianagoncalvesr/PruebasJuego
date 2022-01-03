@@ -17,7 +17,7 @@ public class IntroManager : MonoBehaviour
 
     public void EnablePortals()
     {
-        if (GameManager.instance.GetKeysPicked() == 2)
+        if (GameManager.instance.GetKeysPicked() >= 2)
         {
             portal2.SetActive(true);
             portal3.SetActive(true);
