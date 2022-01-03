@@ -49,3 +49,5 @@ Juego/Logs/shadercompiler-UnityShaderCompiler.exe0.log
 Juego/Logs/AssetImportWorker0-prev.log
 *.log
 *.log
+Juego/UserSettings/EditorUserSettings.asset
+*.asset
