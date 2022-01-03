@@ -12,7 +12,6 @@ public class PortalSwitch : MonoBehaviour
 
     [SerializeField] private scenes Change;
     [SerializeField] int kay = 0;
-    [SerializeField] int diamonn = 0;
     [SerializeField] Transform particles;
     public bool isIntro = false;
 
