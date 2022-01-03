@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerSpeed = 3;
     [SerializeField] private int rotationSpeed = 250;
 
-    //[SerializeField] private Canvas canvas;
     Animator anim;
     Rigidbody rb;
 
@@ -54,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public event Action CharacterWithOutLifeEvent;
     public event Action healingEvent;
 
-    private bool puedeMoverse = false;
+    public bool puedeMoverse = false;
 
 
     //camera
