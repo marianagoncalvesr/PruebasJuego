@@ -10107,10 +10107,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 773130240}
     m_Modifications:
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_TagString
+      value: Portal Final
+      objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: Change
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 6809944706259094416, guid: db7d4548411842247b94cfb895d27834, type: 3}
     - target: {fileID: 3735943844495370454, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_Name
       value: Portal Final
@@ -21845,7 +21853,7 @@ PrefabInstance:
     - target: {fileID: 615675750957834871, guid: fb9f2d07ea001ee41a1ba4bd0d142f0d, type: 3}
       propertyPath: particles
       value: 
-      objectReference: {fileID: 2339616375373499158, guid: 58534f5b0b97d674a87d07b283cc8231, type: 3}
+      objectReference: {fileID: 6809944706259094416, guid: db7d4548411842247b94cfb895d27834, type: 3}
     - target: {fileID: 615675750957834871, guid: fb9f2d07ea001ee41a1ba4bd0d142f0d, type: 3}
       propertyPath: particlesPosition
       value: 
