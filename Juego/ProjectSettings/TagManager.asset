@@ -33,6 +33,7 @@ TagManager:
   - Activator
   - Health
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX

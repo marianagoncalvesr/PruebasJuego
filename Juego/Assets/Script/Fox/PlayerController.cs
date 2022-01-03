@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     public event Action CharacterWithOutLifeEvent;
     public event Action healingEvent;
 
-    private bool puedeMoverse = false;
+    public bool puedeMoverse = false;
 
 
     //camera

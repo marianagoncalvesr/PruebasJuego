@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour
     private void InitializeKeys()
     {
         doorKeysTotal = new Keys[3];
+        doorKeysTotal[0] = new Keys() { Lvl = 1, Picked = true, UsedInDoor = true };
+        doorKeysTotal[1] = new Keys() { Lvl = 2, Picked = true, UsedInDoor = true };
+        doorKeysTotal[2] = new Keys() { Lvl = 3, Picked = true, UsedInDoor = false };
 
-        for (int i = 0; i < doorKeysTotal.Length; i++)
-        {
-            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = true, UsedInDoor = false };
-        }
+        //for (int i = 0; i < doorKeysTotal.Length; i++)
+        //{
+        //    doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = true, UsedInDoor = false };
+        //}
 
     }
 
@@ -131,17 +134,17 @@ public class GameManager : MonoBehaviour
 
 
 
-    public List<Keys> GetKeysAvailable()
+    public Queue<Keys> GetKeysAvailable(bool used = false)
     {
-        List<Keys> keysNotUsed = new List<Keys>();
+        Queue<Keys> keysNotUsed = new Queue<Keys>();
 
         Keys[] llaves = GameManager.instance.doorKeysTotal;
 
-        for (int i = 1; i < llaves.Length + 1; i++)
+        for (int i = 0; i < llaves.Length; i++)
         {
-            if (llaves[i].Picked == true && llaves[i].Lvl == i && !llaves[i].UsedInDoor)
+            if (llaves[i].Picked == true && llaves[i].UsedInDoor == used)
             {
-                keysNotUsed.Add(llaves[i]);
+                keysNotUsed.Enqueue(llaves[i]);
             }
         }
         return keysNotUsed;
