@@ -24,7 +24,8 @@ public class PortalSwitch : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         playerDiamond = player.GetComponent<PlayerController>();
-        Instantiate(particles, transform);
+        if (particles != null)
+            Instantiate(particles, transform);
     }
 
 
