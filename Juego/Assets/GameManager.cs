@@ -153,6 +153,10 @@ public class GameManager : MonoBehaviour
         return keysNotUsed;
     }
 
+    public void TestMessage()
+    {
+        Debug.Log("Pressing button");
+    }
 }
 
 public enum EElementType
