@@ -53,6 +53,7 @@ public class MovingFloorController : MonoBehaviour
         if (other.gameObject == player)
         {
             player.transform.parent = transform;
+            
         }
     }
 

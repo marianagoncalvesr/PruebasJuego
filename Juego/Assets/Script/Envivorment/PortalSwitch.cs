@@ -4,15 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public enum scenes { Intro = 1, Level1, LevelBoss1, Level2 }
+public enum scenes { Intro = 1, Level1, Level2, level3 }
 
 public class PortalSwitch : MonoBehaviour
 {
 
-   
+
     [SerializeField] private scenes Change;
     [SerializeField] int kay = 0;
     [SerializeField] int diamonn = 0;
+    [SerializeField] Transform particles;
+    public bool isIntro = false;
+
 
     public PlayerController playerDiamond;
 
@@ -21,8 +24,10 @@ public class PortalSwitch : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         playerDiamond = player.GetComponent<PlayerController>();
-
+        Instantiate(particles, transform);
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -37,16 +42,21 @@ public class PortalSwitch : MonoBehaviour
         {
             Scenes();
 
-            GameObject gO = GameObject.FindGameObjectWithTag("Canvas");
-            if (gO != null)
+            if (isIntro != true)
             {
-                gO.GetComponent<CanvasController>().ActivateEndLevelStats();
+                GameObject gO = GameObject.FindGameObjectWithTag("Canvas");
+                if (gO != null)
+                {
+                    gO.GetComponent<CanvasController>().ActivateEndLevelStats();
 
+                }
             }
+
 
 
         }
     }
+
 
 
     void Scenes()
@@ -54,18 +64,17 @@ public class PortalSwitch : MonoBehaviour
         switch (Change)
         {
             case scenes.Intro:
-                if (kay == 1)
-                    SceneManager.LoadScene("Intro");
+
+                SceneManager.LoadScene("Intro");
                 break;
             case scenes.Level1:
                 SceneManager.LoadScene("Level 1");
                 break;
-            case scenes.LevelBoss1:
-                if (playerDiamond.diamonds == 20)
-                    SceneManager.LoadScene("Level 1 Boss");
-                break;
             case scenes.Level2:
                 SceneManager.LoadScene("Level 2");
+                break;
+            case scenes.level3:
+                SceneManager.LoadScene("Level 3");
                 break;
             default:
                 Debug.Log("No se puso una escena");

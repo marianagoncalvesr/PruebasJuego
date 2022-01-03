@@ -281,13 +281,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (diamonds > 19)
-            {
-                if (other.gameObject.CompareTag("Portal Final"))
-                {
-                    // SceneManager.LoadScene("Null Level");
-                }
-            }
+           
         }
         catch (Exception)
         {
