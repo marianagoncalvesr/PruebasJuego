@@ -2150,6 +2150,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6081583858140359067, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.0876465
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081583858140359067, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.8278809
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2210cec3539be6242bf21a5a6c43f5fc, type: 3}
 --- !u!1001 &222186649
@@ -4453,10 +4461,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 161552340}
     m_Modifications:
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_TagString
+      value: Portal Final
+      objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: Change
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 6809944706259094416, guid: db7d4548411842247b94cfb895d27834, type: 3}
     - target: {fileID: 3735943844495370454, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_Name
       value: Portal (1)
@@ -4507,6 +4527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+--- !u!1 &521790381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+  m_PrefabInstance: {fileID: 521790380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &540082807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16874,6 +16899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953308703}
   - component: {fileID: 1953308702}
+  - component: {fileID: 1953308704}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -16909,6 +16935,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1953308704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953308701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30928db9d1f032041bc6087c6a39e586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portal: {fileID: 521790381}
 --- !u!1001 &1954699486
 PrefabInstance:
   m_ObjectHideFlags: 0
