@@ -20,14 +20,14 @@ public class CanvasController : MonoBehaviour
     private GameObject player;
     [SerializeField] GameObject[] itemStat;
     [SerializeField] GameObject templateItemStat;
-    [SerializeField] GameObject panelStat;
+  //  [SerializeField] GameObject panelStat;
     [SerializeField] GameObject ListContainer;
 
     public void ActivateEndLevelStats(bool enable = true)
     {
         if (enable)
             ShowStats();
-        panelStat.SetActive(enable);
+      //  panelStat.SetActive(enable);
 
     }
 
