@@ -9262,6 +9262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844978720}
   - component: {fileID: 844978721}
+  - component: {fileID: 844978722}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9297,6 +9298,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfDiamants: 10
   gamePaused: 0
+--- !u!114 &844978722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844978719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30928db9d1f032041bc6087c6a39e586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portal: {fileID: 910545395}
 --- !u!4 &846742337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3537758646361262671, guid: c8c1ebfcb1ce8d942bc59f31bd89ebc1, type: 3}
@@ -9865,6 +9879,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 773130240}
     m_Modifications:
     - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_TagString
       value: Portal Final
       objectReference: {fileID: 0}
@@ -9986,6 +10004,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+--- !u!1 &910545395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+  m_PrefabInstance: {fileID: 910545394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &910940546
 PrefabInstance:
   m_ObjectHideFlags: 0
