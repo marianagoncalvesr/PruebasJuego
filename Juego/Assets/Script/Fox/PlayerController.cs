@@ -139,21 +139,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        Prueba();
-    }
-
     void Update()
     {
-
-
-        //Movement();
 
         timer += Time.deltaTime;
         if (puedeMoverse == false)
         {
-            //Movement();
+            Prueba();
             Jump();
             Attack();
         }

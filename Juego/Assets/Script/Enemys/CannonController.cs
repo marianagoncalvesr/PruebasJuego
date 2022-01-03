@@ -37,4 +37,18 @@ public class CannonController : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("TailHitBox"))
+        {
+            DestroyCannon();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("TailHitBox"))
+        {
+            DestroyCannon();
+        }
+    }
 }
