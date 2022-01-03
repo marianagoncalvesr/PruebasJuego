@@ -2332,6 +2332,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6795007670564271043, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.74241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795007670564271043, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.8671875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795007670564271043, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -93.011475
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795007671261834090, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.74241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795007671261834090, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.8671875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6795007671261834090, guid: 16dca769667061e40a0a0daeca440295, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -93.011475
+      objectReference: {fileID: 0}
     - target: {fileID: 6795007672273405238, guid: 16dca769667061e40a0a0daeca440295, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5410,7 +5434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 129.729, y: -57.09, z: 0}
 --- !u!1 &1820658317
 GameObject:
@@ -6133,7 +6157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436951, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6745767703305436951, guid: 70ff708531ed6b440a3bac9be31fb8f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6623,7 +6647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3500485986491606936, guid: df96a259e1b334d42baeb98ebe3a3f61, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3500485986491606936, guid: df96a259e1b334d42baeb98ebe3a3f61, type: 3}
       propertyPath: m_LocalPosition.x
