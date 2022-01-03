@@ -29,14 +29,17 @@ public class DoorController : MonoBehaviour
         {
             case 1:
                 anim.SetBool("Key1",true);
+                key.UsedInDoor= true;
                 break;
 
             case 2:
                 anim.SetBool("Key2", true);
+                key.UsedInDoor = true;
                 break;
 
             case 3:
                 anim.SetBool("Key3", true);
+                key.UsedInDoor = true;
                 yield return new WaitForSeconds(2);
                 anim.SetBool("DoorOpen", true);
                 gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -54,7 +57,6 @@ public class DoorController : MonoBehaviour
         keys = GameManager.instance.GetKeysAvailable(used);
         if (keys.Count > 0)
             UseKeyAnimation();
-        
     }
 
 
