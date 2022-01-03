@@ -50,3 +50,4 @@ Juego/Logs/AssetImportWorker0-prev.log
 *.log
 *.log
 Juego/UserSettings/EditorUserSettings.asset
+*.asset
