@@ -263,24 +263,6 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-
-            if (diamonds > 9)
-            {
-                if (other.gameObject.CompareTag("Portal"))
-                {
-                    GameManager.instance.PauseUnPauseGame(0);
-                }
-
-            }
-
-            if (other.gameObject.CompareTag("Portal"))
-            {
-                if (diamonds < 8)
-                {
-                    onLevelNotCompleted.Invoke();
-                }
-            }
-
            
         }
         catch (Exception)

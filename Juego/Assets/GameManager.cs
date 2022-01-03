@@ -35,31 +35,12 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < doorKeysTotal.Length; i++)
         {
-            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = false, UsedInDoor = false };
+            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = false,PickedInThisLevel=false, UsedInDoor = false };
         }
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!gamePaused)
-                PauseUnPauseGame(0);
-            else
-                PauseUnPauseGame(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-            PauseUnPauseGame(1);
-
-    }
-
-    public void PauseUnPauseGame(int time)
-    {
-        gamePaused = !gamePaused;
-        Time.timeScale = time;
-        Debug.Log(CurrentStats.ToString());
-    }
+   
 
 
     private void InitializeGameStats()
@@ -94,6 +75,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CleanKeysPicked()
+    {
+        for (int i = 0; i < doorKeysTotal.Length; i++)
+        {
+            if (DoorKeysTotal[i].PickedInThisLevel == true)
+            {
+                doorKeysTotal[i].Picked = false;
+                DoorKeysTotal[i].PickedInThisLevel = false;
+            }
+        }
+    }
+
     public void KeyPicked(int lvl)
     {
         for (int i = 0; i < doorKeysTotal.Length; i++)
@@ -101,6 +94,7 @@ public class GameManager : MonoBehaviour
             if (doorKeysTotal[i].Lvl == lvl)
             {
                 doorKeysTotal[i].Picked = true;
+                DoorKeysTotal[i].PickedInThisLevel = true;
             }
         }
     }

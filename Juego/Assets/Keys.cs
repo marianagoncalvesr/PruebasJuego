@@ -6,5 +6,6 @@ public class Keys
 {
     public int Lvl { get; set; }
     public bool Picked { get; set; }
+    public bool PickedInThisLevel { get; set; }
     public bool UsedInDoor { get; set; }
 }
