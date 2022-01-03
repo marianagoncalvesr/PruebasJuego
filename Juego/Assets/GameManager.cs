@@ -132,7 +132,19 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-
+    public int GetKeysPicked()
+    {
+        int keys = 0;
+        Keys[] llaves = GameManager.instance.doorKeysTotal;
+        for (int i = 0; i < llaves.Length; i++)
+        {
+            if (llaves[i].Picked == true)
+            {
+                keys++;
+            }
+        }
+        return keys;
+    }
 
     public Queue<Keys> GetKeysAvailable(bool used = false)
     {
@@ -148,7 +160,6 @@ public class GameManager : MonoBehaviour
             }
         }
         return keysNotUsed;
-
     }
 
 }

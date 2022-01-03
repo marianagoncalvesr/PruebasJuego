@@ -1372,10 +1372,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063641187}
     m_Modifications:
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_TagString
+      value: Portal Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: Change
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: isIntro
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: particles
       value: 
       objectReference: {fileID: 6809944706259094416, guid: db7d4548411842247b94cfb895d27834, type: 3}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: PortalActivated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3735943844495370454, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: m_Name
       value: Portal (3)
@@ -1620,6 +1640,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1796254487222498896, guid: bfb486a67b82aae47a4d0dad3a044477, type: 3}
   m_PrefabInstance: {fileID: 462855903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &464158739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+  m_PrefabInstance: {fileID: 1388630166}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &553429295
 PrefabInstance:
@@ -3897,6 +3922,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3537758646361262671, guid: c8c1ebfcb1ce8d942bc59f31bd89ebc1, type: 3}
   m_PrefabInstance: {fileID: 997108384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1057508503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+  m_PrefabInstance: {fileID: 412759840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1058411431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,9 +4847,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063641187}
     m_Modifications:
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298259552735729504, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: m_TagString
+      value: Portal Final
+      objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: Change
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: isIntro
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: particles
@@ -5220,6 +5262,10 @@ PrefabInstance:
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: Change
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
+      propertyPath: isIntro
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2928301636451259999, guid: 6a85d5e3a961aef46868d50048bb5de6, type: 3}
       propertyPath: particles
@@ -6252,7 +6298,7 @@ GameObject:
   - component: {fileID: 1820658318}
   - component: {fileID: 1820658320}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6298,6 +6344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b724afdb773a22744a9135821ed8cab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portal2: {fileID: 464158739}
+  portal3: {fileID: 1057508503}
 --- !u!1001 &1840102439
 PrefabInstance:
   m_ObjectHideFlags: 0
