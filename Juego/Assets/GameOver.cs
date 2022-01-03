@@ -16,9 +16,16 @@ public class GameOver : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 4)
-        {
-            SceneManager.LoadScene("MenuPrincipal");
-        }
+        //if (timer > 4)
+        //{
+        //    SceneManager.LoadScene("MainMenu");
+        //}
+
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
