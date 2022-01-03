@@ -383,7 +383,7 @@ public class PlayerController : MonoBehaviour
     {
         if (playerLives < 1)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene("GameOver");
         }
         if (health == 0)
         {

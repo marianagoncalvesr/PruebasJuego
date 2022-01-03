@@ -19,22 +19,24 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        InitializeKeys();
-        InitializeGameStats();
         DontDestroyOnLoad(instance);
     }
+
+    public void NewGame()
+    {
+        InitializeKeys();
+        InitializeGameStats();
+    }
+ 
 
     private void InitializeKeys()
     {
         doorKeysTotal = new Keys[3];
-        doorKeysTotal[0] = new Keys() { Lvl = 1, Picked = true, UsedInDoor = true };
-        doorKeysTotal[1] = new Keys() { Lvl = 2, Picked = true, UsedInDoor = true };
-        doorKeysTotal[2] = new Keys() { Lvl = 3, Picked = true, UsedInDoor = false };
 
-        //for (int i = 0; i < doorKeysTotal.Length; i++)
-        //{
-        //    doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = true, UsedInDoor = false };
-        //}
+        for (int i = 0; i < doorKeysTotal.Length; i++)
+        {
+            doorKeysTotal[i] = new Keys() { Lvl = i + 1, Picked = false, UsedInDoor = false };
+        }
 
     }
 
@@ -59,11 +61,6 @@ public class GameManager : MonoBehaviour
         Debug.Log(CurrentStats.ToString());
     }
 
-
-    public void GoToIntro()
-    {
-        SceneManager.LoadScene("intro");
-    }
 
     private void InitializeGameStats()
     {

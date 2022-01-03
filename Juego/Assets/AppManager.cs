@@ -16,4 +16,10 @@ public class AppManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public void GoToIntro()
+    {
+        GameManager.instance.NewGame();
+        SceneManager.LoadScene("intro");
+    }
+
 }
