@@ -6,6 +6,8 @@ public class AdviceController : MonoBehaviour
 {
     private int distance = 40;
 
+    [SerializeField] GameObject warning;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,16 @@ public class AdviceController : MonoBehaviour
     void Update()
     {
         Warning();
+    
+    }
+
+
+    private IEnumerator EnableWarning()
+    {
+        warning.SetActive(true);
+        yield return new WaitForSeconds(3);
+        warning.SetActive(false);
+
     }
 
     private void Warning()
@@ -26,7 +38,8 @@ public class AdviceController : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 Debug.Log("Necesitas 3 llaves para abrir la puerta");
-                
+                StartCoroutine(EnableWarning());
+
             }
         }
 
