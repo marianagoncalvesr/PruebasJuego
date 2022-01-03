@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AdviceController : MonoBehaviour
 {
-    private int distance = 40;
+   [SerializeField] private int distance = 40;
 
     [SerializeField] GameObject warning;
+    [SerializeField] GameObject direction;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class AdviceController : MonoBehaviour
     private void Warning()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, distance))
+        if (Physics.Raycast(direction.transform.position, direction.transform.TransformDirection(Vector3.forward), out hit, distance))
         {
             if (hit.collider.CompareTag("Player"))
             {
@@ -48,6 +49,6 @@ public class AdviceController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector3.forward * distance);
+        Gizmos.DrawRay(direction.transform.position, direction.transform.TransformDirection(Vector3.forward) * distance);
     }
 }

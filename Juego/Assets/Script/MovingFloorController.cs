@@ -10,6 +10,7 @@ public class MovingFloorController : MonoBehaviour
     bool particlesActivated;
     Animator anim;
     GameObject player;
+    [SerializeField] GameObject warning;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class MovingFloorController : MonoBehaviour
         if (buttomPress == 2 && particlesActivated == false)
         {
             ActivateParticles();
+
         }
     }
 
@@ -48,12 +50,15 @@ public class MovingFloorController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
             if (buttomPress == 2)
+            {
                 anim.SetBool("Up", true);
+                Destroy(warning.gameObject);
+            }
 
         if (other.gameObject == player)
         {
             player.transform.parent = transform;
-            
+
         }
     }
 
